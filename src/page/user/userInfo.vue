@@ -65,7 +65,7 @@ export default {
 
 .userInfoBox {
   padding: 0 .5rem;
-  padding-top: 50px;
+  padding-top: 55px;
   /*background: #FCFAF2;
   border-radius: 10px;*/
 }

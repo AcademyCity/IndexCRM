@@ -25,7 +25,7 @@ export default {
 <style scoped>
 .loginBox {
   padding: 0 1rem;
-  padding-top: 50px
+  padding-top: 55px
 }
 
 .mint-button {

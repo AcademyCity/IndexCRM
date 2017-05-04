@@ -67,7 +67,7 @@ export default {
       selected: 'validCoupon',
       items: [
         { message: '土豆', time: '2017.05.03', url: a },
-        { message: '樱桃沟鸭血', time: '2017.05.03', url: b },
+        { message: '樱桃谷鸭血', time: '2017.05.03', url: b },
         { message: '进口原块牛肉(小)', time: '2017.05.03', url: c },
         { message: '进口原块牛肉套餐', time: '2017.05.03', url: d },
         { message: '铁棍山药', time: '2017.05.03', url: e },
@@ -96,7 +96,7 @@ export default {
 <style scoped>
 .userCouponBox {
   padding: 0 .5rem;
-  padding-top: 50px;
+  padding-top: 55px;
 }
 
 .mint-navbar {
