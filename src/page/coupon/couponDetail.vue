@@ -75,13 +75,13 @@ export default {
 }
 
 .couponName {
-    font-size: .4rem;
+    font-size: .45rem;
     color: #ffffff;
     margin-top: .25rem;
 }
 
 .couponTime {
-    font-size: .35rem;
+    font-size: .4rem;
     color: #ffffff;
     margin-top: .15rem;
 }
