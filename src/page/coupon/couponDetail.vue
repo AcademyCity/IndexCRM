@@ -1,32 +1,36 @@
 ﻿<template>
     <div class="couponDetail">
         <div class="couponDetailBox">
-            <div class="card">
-                <span class="cardName">会员卡</span>
-                <span class="brandName">石头锅</span>
-                <span class="cardNo">012000034238</span>
+            <div class="couponBox">
+                <img class="couponImg" :src="item.url" />
+                <div class="couponTag">
+                    <div class="couponName">
+                        {{item.message}}
+                    </div>
+                    <div class="couponTime">
+                        {{item.time}} - {{item.time}}
+                    </div>
+                </div>
             </div>
             <div class="barCode">
                 <svg ref="code"></svg>
-                <div class="codeTag">如扫码失败请将屏幕调至最亮重新扫码</div>
+                <div class="codeTag">0120 0120 0003 4238</div>
             </div>
         </div>
-    
     </div>
 </template>
 <script>
-
+import a from '../../assets/images/1.jpg'
 
 export default {
     name: 'couponDetail',
     data() {
-    return {
-      selected: 'validCoupon',
-      items: [
-        { message: '土豆', time: '2017.05.03'},
-      ]
-    }
-  },
+        return {
+            selected: 'validCoupon',
+            item: { message: '土豆', time: '2017.05.03', url: a },
+
+        }
+    },
     components: {
     },
     mounted() {
@@ -44,60 +48,56 @@ export default {
 <style scoped>
 .couponDetailBox {
     padding: 0 .5rem;
-    padding-top: 50px;
+    padding-top: 55px;
     /*background: #FCFAF2;
   border-radius: 10px;*/
 }
 
-.card {
-    position: relative;
-    text-align: center;
-    font-size: .3rem;
-    color: #FCFAF2;
-    font-weight: normal;
-    border-radius: 4px 4px 0 0;
-    height: 5.5rem;
-    background: url(https://res.hualala.com/group2/M00/E3/BB/wKgCMljHk9Ce2aDkAAVqDhRRqh4096.jpg) center;
-    background-size: cover;
-}
-
-.cardName {
-    line-height: initial;
-    position: absolute;
-    top: .25rem;
-    left: .25rem;
-}
-
-.brandName {
-    line-height: initial;
-    position: absolute;
-    top: .25rem;
-    right: .25rem;
-}
-
-.cardNo {
-    line-height: initial;
-    position: absolute;
-    left: 0;
-    bottom: .25rem;
+.couponBox {
     width: 100%;
-    text-align: center;
-    font-size: .5rem;
-    font-family: 'ocraext'
+    height: 2.4rem;
+    background: #86C166;
+    border-radius: 6px 6px 0 0;
+    padding: .4rem .5rem;
+}
+
+.couponImg {
+    float: left;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 0.8rem;
+}
+
+.couponTag {
+    float: left;
+    text-align: left;
+    margin-left: .8rem;
+}
+
+.couponName {
+    font-size: .4rem;
+    color: #ffffff;
+    margin-top: .25rem;
+}
+
+.couponTime {
+    font-size: .35rem;
+    color: #ffffff;
+    margin-top: .15rem;
 }
 
 .barCode {
     background: #FFFFFF;
     width: 100%;
-    height: 2.6rem;
-    border-radius: 0 0 4px 4px;
-    padding: .35rem 0;
+    border-radius: 0 0 6px 6px;
     text-align: center;
+    padding-top: .35rem;
 }
 
 .codeTag {
+    padding-bottom: .35rem;
     margin-top: .1rem;
-    font-size: .35rem;
+    font-size: .5rem;
     color: #0B1013
 }
 </style>

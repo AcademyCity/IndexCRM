@@ -76,7 +76,7 @@ export default {
   font-size: .3rem;
   color: #FCFAF2;
   font-weight: normal;
-  border-radius: 4px 4px 0 0;
+  border-radius: 6px 6px 0 0;
   height: 5.5rem;
   background: url(https://res.hualala.com/group2/M00/E3/BB/wKgCMljHk9Ce2aDkAAVqDhRRqh4096.jpg) center;
   background-size: cover;
@@ -119,16 +119,16 @@ export default {
 .barCode{
   background: #FFFFFF;
   width: 100%;
-  height: 2.6rem;
-  border-radius: 0 0 4px 4px;
-  padding: .35rem 0;
+  border-radius: 0 0 6px 6px;
   text-align: center;
+  padding-top: .35rem
 }
 
 .codeTag{
   margin-top: .1rem;
   font-size: .35rem;
-  color: #0B1013
+  color: #0B1013;
+  padding-bottom: .35rem
 }
 
 .point{
@@ -137,7 +137,7 @@ export default {
     margin-right: 0.6%;
     width: 49.7%;
     height: 3rem;
-    border-radius: 4px;
+    border-radius: 6px;
     padding: .4rem 0;
     text-align: center;
     font-size: 1.8rem;
@@ -154,7 +154,7 @@ export default {
     background: #FFFFFF;
     width: 49.7%;
     height: 3rem;
-    border-radius: 4px;
+    border-radius: 6px;
     padding: .4rem 0;
     text-align: center;
     font-size: 1.8rem;
@@ -172,7 +172,7 @@ export default {
     margin-right: 0.6%;
     width: 49.7%;
     height: 3rem;
-    border-radius: 4px;
+    border-radius: 6px;
     padding: .4rem 0;
     text-align: center;
     font-size: 1.8rem;
@@ -189,7 +189,7 @@ export default {
     background: #FFFFFF;
     width: 49.7%;
     height: 3rem;
-    border-radius: 4px;
+    border-radius: 6px;
     padding: .4rem 0;
     text-align: center;
     font-size: 1.8rem;

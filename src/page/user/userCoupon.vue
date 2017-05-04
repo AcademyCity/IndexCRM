@@ -12,7 +12,7 @@
         <mt-tab-container-item id="validCoupon">
           <div class="couponBox" v-for="(item,index) in items" :key="index">
             <img class="couponImg" :src="item.url" />
-            <div class="couponDetail" @click="couponDetail">
+            <div class="couponTag" @click="couponDetail">
               <div class="couponName">
                 {{item.message}}
               </div>
@@ -25,7 +25,7 @@
         <mt-tab-container-item id="useCoupon">
           <div class="couponBox" v-for="(item,index) in items" :key="index">
             <img class="couponImg" :src="item.url" />
-            <div class="couponDetail">
+            <div class="couponTag">
               <div class="couponName">
                 {{item.message}}
               </div>
@@ -38,7 +38,7 @@
         <mt-tab-container-item id="invalidCoupon">
           <div class="couponBox" v-for="(item,index) in items" :key="index">
             <img class="couponImg" :src="item.url" />
-            <div class="couponDetail">
+            <div class="couponTag">
               <div class="couponName">
                 {{item.message}}
               </div>
@@ -100,7 +100,7 @@ export default {
 }
 
 .mint-navbar {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .mint-navbar .mint-tab-item.is-selected {
@@ -109,12 +109,16 @@ export default {
 }
 
 .couponBox {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   width: 100%;
   height: 3rem;
   background: #ffffff;
   border-radius: 6px;
   padding: .4rem .5rem;
+}
+
+.couponBox:last-child {
+  margin-bottom: 30px;
 }
 
 .couponImg {
@@ -124,7 +128,7 @@ export default {
   border-radius: 1.1rem;
 }
 
-.couponDetail {
+.couponTag {
   float: left;
   text-align: left;
   margin-left: .8rem;
@@ -133,12 +137,12 @@ export default {
 .couponName {
   font-size: .4rem;
   color: #86C166;
-  margin-top: .45rem;
+  margin-top: .5rem;
 }
 
 .couponTime {
   font-size: .35rem;
   color: #0B1013;
-  margin-top: .2rem;
+  margin-top: .25rem;
 }
 </style>
