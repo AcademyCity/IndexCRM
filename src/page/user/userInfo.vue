@@ -77,7 +77,7 @@ export default {
   color: #FCFAF2;
   font-weight: normal;
   border-radius: 6px 6px 0 0;
-  height: 5.5rem;
+  height: 5rem;
   background: url(https://res.hualala.com/group2/M00/E3/BB/wKgCMljHk9Ce2aDkAAVqDhRRqh4096.jpg) center;
   background-size: cover;
 }
