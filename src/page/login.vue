@@ -24,7 +24,7 @@ export default {
 
 <style scoped>
 .loginBox {
-  padding: 0 1rem;
+  padding: 0 .5rem;
   padding-top: 55px
 }
 

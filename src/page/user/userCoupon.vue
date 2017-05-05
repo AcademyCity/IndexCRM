@@ -10,39 +10,39 @@
       <!-- tab-container -->
       <mt-tab-container v-model="selected">
         <mt-tab-container-item id="validCoupon">
-          <div class="couponBox" v-for="(item,index) in items" :key="index">
-            <img class="couponImg" :src="item.url" />
-            <div class="couponTag" @click="couponDetail">
-              <div class="couponName">
+          <div class="couponBox" @click="couponDetail" v-for="(item,index) in items" :key="index">
+            <img class="couponImg" :class="{grayImg:item.isUse}" :src="item.url" />
+            <div class="couponTag">
+              <div class="couponName" :class="{grayText:item.isUse}">
                 {{item.message}}
               </div>
-              <div class="couponTime">
+              <div class="couponTime" :class="{grayText:item.isUse}">
                 {{item.time}} - {{item.time}}
               </div>
             </div>
           </div>
         </mt-tab-container-item>
         <mt-tab-container-item id="useCoupon">
-          <div class="couponBox" v-for="(item,index) in items" :key="index">
-            <img class="couponImg" :src="item.url" />
+          <div class="couponBox" @click="couponDetail" v-for="(item,index) in items" :key="index">
+            <img class="couponImg" :class="{grayImg:item.isUse}" :src="item.url" />
             <div class="couponTag">
-              <div class="couponName">
+              <div class="couponName" :class="{grayText:item.isUse}">
                 {{item.message}}
               </div>
-              <div class="couponTime">
+              <div class="couponTime" :class="{grayText:item.isUse}">
                 {{item.time}} - {{item.time}}
               </div>
             </div>
           </div>
         </mt-tab-container-item>
         <mt-tab-container-item id="invalidCoupon">
-          <div class="couponBox" v-for="(item,index) in items" :key="index">
-            <img class="couponImg" :src="item.url" />
+          <div class="couponBox" @click="couponDetail" v-for="(item,index) in items" :key="index">
+            <img class="couponImg" :class="{grayImg:item.isUse}" :src="item.url" />
             <div class="couponTag">
-              <div class="couponName">
+              <div class="couponName" :class="{grayText:item.isUse}">
                 {{item.message}}
               </div>
-              <div class="couponTime">
+              <div class="couponTime" :class="{grayText:item.isUse}">
                 {{item.time}} - {{item.time}}
               </div>
             </div>
@@ -66,12 +66,12 @@ export default {
     return {
       selected: 'validCoupon',
       items: [
-        { message: '土豆', time: '2017.05.03', url: a },
-        { message: '樱桃谷鸭血', time: '2017.05.03', url: b },
-        { message: '进口原块牛肉(小)', time: '2017.05.03', url: c },
-        { message: '进口原块牛肉套餐', time: '2017.05.03', url: d },
-        { message: '铁棍山药', time: '2017.05.03', url: e },
-        { message: '台式花枝丸', time: '2017.05.03', url: f }
+        { message: '土豆', time: '2017.05.03', url: a, isUse: false },
+        { message: '樱桃谷鸭血', time: '2017.05.03', url: b, isUse: true },
+        { message: '进口原块牛肉(小)', time: '2017.05.03', url: c, isUse: false },
+        { message: '进口原块牛肉套餐', time: '2017.05.03', url: d, isUse: true },
+        { message: '铁棍山药', time: '2017.05.03', url: e, isUse: false },
+        { message: '台式花枝丸', time: '2017.05.03', url: f, isUse: true }
       ]
     }
   },
@@ -100,7 +100,7 @@ export default {
 }
 
 .mint-navbar {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .mint-navbar .mint-tab-item.is-selected {
@@ -109,7 +109,7 @@ export default {
 }
 
 .couponBox {
-  margin-bottom: 5px;
+  margin-bottom: .15rem;
   width: 100%;
   height: 3rem;
   background: #ffffff;
@@ -118,7 +118,7 @@ export default {
 }
 
 .couponBox:last-child {
-  margin-bottom: 30px;
+  margin-bottom: 1rem;
 }
 
 .couponImg {
@@ -127,6 +127,20 @@ export default {
   height: 2.2rem;
   border-radius: 1.1rem;
 }
+
+.grayImg {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+}
+
+.grayText {
+  color: #cccccc !important;
+}
+
 
 .couponTag {
   float: left;

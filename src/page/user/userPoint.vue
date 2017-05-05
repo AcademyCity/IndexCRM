@@ -15,6 +15,16 @@
           <div class="pointHint">
             暂无可兑换优惠券
           </div>
+          <div class="ruleBox">
+            <div class='ruleTitle'>积分规则</div>
+            <div class='ruleContent'>
+              <p>
+                1、消费1元赠送1积分
+                <br> 2、积分不可兑换现金，不开发票
+                <br> 3、当年累计积分，将在次年4月12日清零
+              </p>
+            </div>
+          </div>
         </mt-tab-container-item>
         <mt-tab-container-item id="pointRecord">
           <!--<mt-cell v-for="(item,index) in items" :key="item.message" :title="'积分:' + item.message" />-->
@@ -67,7 +77,7 @@ export default {
   padding-top: 55px;
 }
 
-.mint-navbar{
+.mint-navbar {
   margin-bottom: 15px;
 }
 
@@ -98,7 +108,7 @@ export default {
   padding: 0 .5rem;
 }
 
-.mint-cell-text{
+.mint-cell-text {
   font-size: .25rem;
 }
 
