@@ -11,41 +11,51 @@
       <mt-tab-container v-model="selected">
         <mt-tab-container-item id="validCoupon">
           <div class="couponBox" @click="couponDetail" v-for="(item,index) in items" :key="index">
-            <img class="couponImg" :class="{grayImg:item.isUse}" :src="item.url" />
+            <div class="couponImgBox" :class="{grayImg:item.isUse}">
+              <img class="couponImg" :class="{grayImg:item.isUse}" :src="item.url" />
+            </div>
+  
             <div class="couponTag">
               <div class="couponName" :class="{grayText:item.isUse}">
                 {{item.message}}
               </div>
               <div class="couponTime" :class="{grayText:item.isUse}">
-                {{item.time}} - {{item.time}}
+                {{item.time}}-{{item.time}} 有效
               </div>
             </div>
           </div>
         </mt-tab-container-item>
         <mt-tab-container-item id="useCoupon">
           <div class="couponBox" @click="couponDetail" v-for="(item,index) in items" :key="index">
-            <img class="couponImg" :class="{grayImg:item.isUse}" :src="item.url" />
+            <div class="couponImgBox">
+              <img class="couponImg" :src="item.url" />
+            </div>
+  
             <div class="couponTag">
-              <div class="couponName" :class="{grayText:item.isUse}">
+              <div class="couponName">
                 {{item.message}}
               </div>
-              <div class="couponTime" :class="{grayText:item.isUse}">
-                {{item.time}} - {{item.time}}
+              <div class="couponTime">
+                {{item.time}}-{{item.time}}
               </div>
             </div>
+            <span class="useTag">已使用</span>
           </div>
         </mt-tab-container-item>
         <mt-tab-container-item id="invalidCoupon">
           <div class="couponBox" @click="couponDetail" v-for="(item,index) in items" :key="index">
-            <img class="couponImg" :class="{grayImg:item.isUse}" :src="item.url" />
+            <div class="couponImgBox grayImg">
+              <img class="couponImg grayImg" :src="item.url" />
+            </div>
             <div class="couponTag">
-              <div class="couponName" :class="{grayText:item.isUse}">
+              <div class="couponName grayText">
                 {{item.message}}
               </div>
-              <div class="couponTime" :class="{grayText:item.isUse}">
-                {{item.time}} - {{item.time}}
+              <div class="couponTime grayText">
+                {{item.time}}-{{item.time}}
               </div>
             </div>
+            <span class="expiredTag">已过期</span>
           </div>
         </mt-tab-container-item>
       </mt-tab-container>
@@ -67,7 +77,7 @@ export default {
       selected: 'validCoupon',
       items: [
         { message: '土豆', time: '2017.05.03', url: a, isUse: false },
-        { message: '樱桃谷鸭血', time: '2017.05.03', url: b, isUse: true },
+        { message: '樱桃谷鸭血', time: '2017.05.03', url: b, isUse: false },
         { message: '进口原块牛肉(小)', time: '2017.05.03', url: c, isUse: false },
         { message: '进口原块牛肉套餐', time: '2017.05.03', url: d, isUse: true },
         { message: '铁棍山药', time: '2017.05.03', url: e, isUse: false },
@@ -100,7 +110,7 @@ export default {
 }
 
 .mint-navbar {
-  margin-bottom: 15px;
+  margin-bottom: 13px;
 }
 
 .mint-navbar .mint-tab-item.is-selected {
@@ -111,21 +121,27 @@ export default {
 .couponBox {
   margin-bottom: .15rem;
   width: 100%;
-  height: 3rem;
+  height: 2.8rem;
   background: #ffffff;
   border-radius: 6px;
-  padding: .4rem .5rem;
+  position: relative;
 }
 
 .couponBox:last-child {
   margin-bottom: 1rem;
 }
 
-.couponImg {
+.couponImgBox {
   float: left;
-  width: 2.2rem;
-  height: 2.2rem;
-  border-radius: 1.1rem;
+  width: 3.4rem;
+  height: 2.8rem;
+  padding: .4rem .7rem;
+}
+
+.couponImg {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
 }
 
 .grayImg {
@@ -138,25 +154,67 @@ export default {
 }
 
 .grayText {
-  color: #cccccc !important;
+  color: #808080 !important;
 }
-
 
 .couponTag {
   float: left;
   text-align: left;
-  margin-left: .8rem;
+  padding: .8rem 0 .6rem 0;
+  line-height: .7rem;
 }
 
 .couponName {
   font-size: .45rem;
   color: #86C166;
-  margin-top: .5rem;
+  height: .7rem;
 }
 
 .couponTime {
-  font-size: .4rem;
+  font-size: .35rem;
   color: #0B1013;
-  margin-top: .25rem;
+  height: .7rem;
+}
+
+.useTag {
+  padding: .1rem .7rem;
+  color: #CC543A;
+  font-size: .4rem;
+  border: 3px #CC543A solid;
+  font-weight: bold;
+  position: absolute;
+  bottom: .9rem;
+  right: .8rem;
+  /* Rotate div */
+  transform: rotate(-25deg);
+  -ms-transform: rotate(-25deg);
+  /* Internet Explorer */
+  -moz-transform: rotate(-25deg);
+  /* Firefox */
+  -webkit-transform: rotate(-25deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(-25deg);
+  /* Opera */
+}
+
+.expiredTag {
+  padding: .1rem .7rem;
+  color: #808080;
+  font-size: .4rem;
+  border: 3px #808080 solid;
+  font-weight: bold;
+  position: absolute;
+  bottom: .9rem;
+  right: .8rem;
+  /* Rotate div */
+  transform: rotate(-25deg);
+  -ms-transform: rotate(-25deg);
+  /* Internet Explorer */
+  -moz-transform: rotate(-25deg);
+  /* Firefox */
+  -webkit-transform: rotate(-25deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(-25deg);
+  /* Opera */
 }
 </style>

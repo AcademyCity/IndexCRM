@@ -78,7 +78,7 @@ export default {
 }
 
 .mint-navbar {
-  margin-bottom: 15px;
+  margin-bottom: 13px;
 }
 
 .mint-navbar .mint-tab-item.is-selected {
