@@ -1,6 +1,6 @@
-﻿<template>
-    <div class="couponDetail">
-        <div class="couponDetailBox">
+<template>
+    <div class="marketCoupon">
+        <div class="marketCouponBox">
             <div class="couponBox">
                 <div class="couponImgBox">
                     <img class="couponImg" :src="item.url" />
@@ -13,10 +13,6 @@
                         {{item.time}}-{{item.time}} 有效
                     </div>
                 </div>
-            </div>
-            <div class="barCode">
-                <svg ref="code"></svg>
-                <div class="codeTag">0120 0120 0003 4238</div>
             </div>
             <div class="ruleBox">
                 <div class='ruleTitle'>活动内容</div>
@@ -37,29 +33,24 @@
 import a from '../../assets/images/1.jpg'
 
 export default {
-    name: 'couponDetail',
+    name: 'marketCoupon',
     data() {
         return {
-            selected: 'validCoupon',
             item: { message: '土豆', time: '2017.05.03', url: a },
         }
     },
     components: {
     },
     mounted() {
-        this.getBarCode("012000034238");
     },
     methods: {
-        getBarCode: function (code) {
-            var o = { width: 2, height: 50, displayValue: false, margin: 0 }
-            JsBarcode(this.$refs.code, code, o);
-        }
+        
     }
 }
 </script>
 
 <style scoped>
-.couponDetailBox {
+.marketCouponBox {
     padding: 0 .5rem;
     padding-top: 55px;
 }
@@ -105,18 +96,4 @@ export default {
     height: .55rem;
 }
 
-.barCode {
-    background: #FFFFFF;
-    width: 100%;
-    border-radius: 0 0 6px 6px;
-    text-align: center;
-    padding-top: .35rem;
-}
-
-.codeTag {
-    padding-bottom: .35rem;
-    margin-top: .1rem;
-    font-size: .5rem;
-    color: #0B1013
-}
 </style>

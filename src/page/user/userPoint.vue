@@ -112,6 +112,9 @@ export default {
   font-size: .25rem;
 }
 
+
+
+
 /*.mint-cell:first-child {
   border-radius: 6px 6px 0 0;
 }

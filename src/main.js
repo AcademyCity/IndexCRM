@@ -13,13 +13,13 @@ Vue.config.productionTip = false
 
 //Vue.use(MintUI);
 import {
-  Header,
-  Button,
-  Navbar,
-  TabItem,
-  TabContainer,
-  TabContainerItem,
-  Cell
+    Header,
+    Button,
+    Navbar,
+    TabItem,
+    TabContainer,
+    TabContainerItem,
+    Cell
 } from 'mint-ui';
 
 Vue.component(Header.name, Header);
@@ -33,12 +33,12 @@ Vue.component(Cell.name, Cell);
 Vue.prototype.$http = request
 
 router.afterEach(route => {
-  document.title = route.meta.title;
-  store.dispatch('header/head/setHead', document.title)
+    document.title = route.meta.title;
+    store.dispatch('header/head/setHead', document.title)
 })
 
 new Vue({
-  store,
-  router,
-  render: h => h(App)
+    store,
+    router,
+    render: h => h(App)
 }).$mount('#app')

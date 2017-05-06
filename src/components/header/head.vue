@@ -17,17 +17,16 @@ export default {
     })
   },
   methods: {
-    back:function () {
-      this.$router.go(-1)
+    back: function () {
+      this.$router.go(-1);
     }
   },
 }
 </script>
 
 <style scoped>
-  .mint-header
-  {
-    background-color: #86C166;
-    box-shadow: 0px 2px 3px #999999;
-  }
+.mint-header {
+  background-color: #86C166;
+  box-shadow: 0px 2px 3px #999999;
+}
 </style>

@@ -10,7 +10,7 @@
       <!-- tab-container -->
       <mt-tab-container v-model="selected">
         <mt-tab-container-item id="validCoupon">
-          <div class="couponBox" @click="couponDetail" v-for="(item,index) in items" :key="index">
+          <div class="couponBox" @click="couponInfo" v-for="(item,index) in items" :key="index">
             <div class="couponImgBox" :class="{grayImg:item.isUse}">
               <img class="couponImg" :class="{grayImg:item.isUse}" :src="item.url" />
             </div>
@@ -26,7 +26,7 @@
           </div>
         </mt-tab-container-item>
         <mt-tab-container-item id="useCoupon">
-          <div class="couponBox" @click="couponDetail" v-for="(item,index) in items" :key="index">
+          <div class="couponBox" v-for="(item,index) in items" :key="index">
             <div class="couponImgBox">
               <img class="couponImg" :src="item.url" />
             </div>
@@ -43,7 +43,7 @@
           </div>
         </mt-tab-container-item>
         <mt-tab-container-item id="invalidCoupon">
-          <div class="couponBox" @click="couponDetail" v-for="(item,index) in items" :key="index">
+          <div class="couponBox" v-for="(item,index) in items" :key="index">
             <div class="couponImgBox grayImg">
               <img class="couponImg grayImg" :src="item.url" />
             </div>
@@ -96,8 +96,8 @@ export default {
   mounted() {
   },
   methods: {
-    couponDetail: function () {
-      this.$router.push({ path: '/coupon/couponDetail' })
+    couponInfo: function () {
+      this.$router.push({ path: '/coupon/couponInfo' })
     }
   }
 }
