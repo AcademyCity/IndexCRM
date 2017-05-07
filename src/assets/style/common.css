@@ -142,8 +142,7 @@ body {
 }
 
 .ruleBox {
-    margin-top: .8rem;
-    margin-left: .3rem;
+    margin: .8rem .6rem;
     font-size: .35rem;
     color: #828282
 }

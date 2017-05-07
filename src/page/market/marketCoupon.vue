@@ -26,6 +26,12 @@
                     </p>
                 </div>
             </div>
+            <div class="pointIcon">
+                <div class="couponPointIcon iconfont">&#xe703;</div>
+                <div class="couponPointTag">兑换需积分</div>
+                <div class="couponPointNum">150</div>
+            </div>
+            <mt-button type="primary">立即兑换</mt-button>
         </div>
     </div>
 </template>
@@ -96,4 +102,54 @@ export default {
     height: .55rem;
 }
 
+.ruleBox {
+    padding: .6rem;
+    padding-bottom: .35rem;
+    margin: 0;
+    font-size: .35rem;
+    color: #0B1013;
+    background: #ffffff;
+    border-bottom: 2px #eee dashed  
+}
+
+.ruleTitle {
+    font-size: .38rem;
+}
+
+.ruleContent {
+    margin-top: .35rem;
+    line-height: .65rem;
+}
+
+.pointIcon {
+    font-size: .5rem;
+    color: #F7D94C;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    border-radius:0 0 6px 6px;
+    background: #ffffff;
+    padding: 0 .6rem;
+}
+
+.couponPointIcon {
+    float: left;
+    font-size: .8rem;
+}
+
+.couponPointTag {
+    float: left;
+    margin-left: .25rem;
+    font-size: .45rem;
+}
+
+.couponPointNum {
+    float: right;
+    font-size: .45rem;
+}
+
+.mint-button {
+    width: 100%;
+    margin-top:1.2rem;
+    background-color: #86C166
+}
 </style>

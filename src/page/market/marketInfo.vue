@@ -1,7 +1,6 @@
 <template>
     <div class="marketInfo">
         <div class="marketInfoBox">
-    
             <div class="couponBox" @click="marketCoupon" v-for="(item,index) in items" :key="index">
                 <div class="couponImgBox">
                     <img class="couponImg" :src="item.url" />
@@ -13,8 +12,9 @@
                     <div class="couponTime">
                         {{item.time}}-{{item.time}} 有效
                     </div>
-                    <div class="couponPoint iconfont">&#xe727;
-                        <div class="couponPointNum">150</div>
+                    <div class="pointIcon">
+                        <div class="couponPointIcon iconfont">&#xe703;</div>
+                        <div class="couponPointNum">兑换需积分:150</div>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@ export default {
 .couponTag {
     float: left;
     text-align: left;
-    padding: .5.5rem 0 .6rem 0;
+    padding: .35rem 0 .15rem 0;
     line-height: .7rem;
 }
 
@@ -123,14 +123,24 @@ export default {
     height: .7rem;
 }
 
-.couponPoint {
-    font-size: .45rem;
-    color: #86C166;
-    height: .7rem;
+.pointIcon {
+    font-size: .5rem;
+    color: #F7D94C;
+    height: .9rem;
+    line-height: .9rem;
+}
+
+.couponPointIcon {
+    float: left;
+    font-size: .8rem;
 }
 
 .couponPointNum {
     float: left;
+    margin-left: .25rem;
+    /*color: #0B1013;*/
+    font-size: .37rem;
+    line-height: .95rem;
 }
 </style>
 
