@@ -67,13 +67,13 @@ const router = [
     {
         meta: { title: '线上建议' },
         path: '/suggest/suggestOne',
-        component: marketCoupon
+        component: suggestOne
     },
     //线上建议(问卷及建议内容)
     {
         meta: { title: '线上建议' },
         path: '/suggest/suggestTwo',
-        component: marketCoupon
+        component: suggestTwo
     },
 ]
 

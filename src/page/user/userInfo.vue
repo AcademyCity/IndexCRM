@@ -49,7 +49,6 @@ export default {
     getBarCode: function (code) {
       var o = { width: 2, height: 50, displayValue: false, margin: 0 };
        JsBarcode(this.$refs.code, code, o);
-      
     },
     point: function () {
       this.$router.push({ path: '/user/userPoint' })
@@ -71,8 +70,6 @@ export default {
 .userInfoBox {
   padding: 0 .5rem;
   padding-top: 55px;
-  /*background: #FCFAF2;
-  border-radius: 10px;*/
 }
 
 .card {

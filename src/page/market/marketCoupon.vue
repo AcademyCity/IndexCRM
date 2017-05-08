@@ -147,9 +147,4 @@ export default {
     font-size: .45rem;
 }
 
-.mint-button {
-    width: 100%;
-    margin-top:1.2rem;
-    background-color: #86C166
-}
 </style>

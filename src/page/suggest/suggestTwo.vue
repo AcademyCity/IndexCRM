@@ -28,9 +28,4 @@ export default {
     padding-top: 55px
 }
 
-.mint-button {
-    width: 100%;
-    margin: 1rem 0;
-    background-color: #86C166
-}
 </style>
