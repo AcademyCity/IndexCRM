@@ -1,7 +1,7 @@
 ﻿<template>
   <div class="login">
     <div class="loginBox">
-      <mt-button id="btn_login" type="primary" @click="login">登录</mt-button>
+      <mt-button id="btn_login" type="custom" @click="login">登录</mt-button>
     </div>
   </div>
 </template>

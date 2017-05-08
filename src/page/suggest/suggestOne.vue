@@ -1,7 +1,7 @@
 ﻿<template>
   <div class="suggestOne">
     <div class="suggestOneBox">
-      <mt-button type="primary" @click="next">下一步</mt-button>
+      <mt-button type="custom" @click="next">下一步</mt-button>
     </div>
   </div>
 </template>

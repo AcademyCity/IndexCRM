@@ -31,7 +31,7 @@
                 <div class="couponPointTag">兑换需积分</div>
                 <div class="couponPointNum">150</div>
             </div>
-            <mt-button type="primary">立即兑换</mt-button>
+            <mt-button type="custom">立即兑换</mt-button>
         </div>
     </div>
 </template>
