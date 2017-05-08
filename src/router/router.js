@@ -10,6 +10,8 @@ const userCoupon = r => require.ensure([], () => r(require('../page/user/userCou
 const couponInfo = r => require.ensure([], () => r(require('../page/coupon/couponInfo')), 'couponInfo')
 const marketInfo = r => require.ensure([], () => r(require('../page/market/marketInfo')), 'marketInfo')
 const marketCoupon = r => require.ensure([], () => r(require('../page/market/marketCoupon')), 'marketCoupon')
+const suggestOne = r => require.ensure([], () => r(require('../page/suggest/suggestOne')), 'suggestOne')
+const suggestTwo = r => require.ensure([], () => r(require('../page/suggest/suggestTwo')), 'suggestTwo')
 
 //定义路由
 const router = [
@@ -59,6 +61,18 @@ const router = [
     {
         meta: { title: '优惠券兑换' },
         path: '/market/marketCoupon',
+        component: marketCoupon
+    },
+    //线上建议(就餐信息)
+    {
+        meta: { title: '线上建议' },
+        path: '/suggest/suggestOne',
+        component: marketCoupon
+    },
+    //线上建议(问卷及建议内容)
+    {
+        meta: { title: '线上建议' },
+        path: '/suggest/suggestTwo',
         component: marketCoupon
     },
 ]

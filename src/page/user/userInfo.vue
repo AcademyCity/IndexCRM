@@ -25,7 +25,7 @@
           <div class="market iconfont" @click="market">&#xe727;
             <div class="marketTag">积分商城</div>
           </div>
-          <div class="suggest iconfont">&#xe6f4;
+          <div class="suggest iconfont" @click="suggest">&#xe6f4;
             <div class="suggestTag">线上建议</div>
           </div>
         </div>
@@ -48,7 +48,7 @@ export default {
   methods: {
     getBarCode: function (code) {
       var o = { width: 2, height: 50, displayValue: false, margin: 0 };
-      JsBarcode(this.$refs.code, code, o);
+       JsBarcode(this.$refs.code, code, o);
       
     },
     point: function () {
@@ -59,6 +59,9 @@ export default {
     },
     market: function () {
       this.$router.push({ path: '/market/marketInfo' })
+    },
+    suggest: function () {
+      this.$router.push({ path: '/suggest/suggestOne' })
     }
   }
 }
@@ -108,6 +111,7 @@ export default {
   font-size: .5rem;
   font-family: 'ocraext'
 }
+
 .menuList {
   margin-top: 0.6%;
   height: 3rem
