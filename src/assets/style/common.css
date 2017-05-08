@@ -160,5 +160,6 @@ body {
     width: 100%;
     margin: 1rem 0;
     background-color: #86C166;
-    font-size: .4rem;
+    font-size: .4rem !important;
+    color: #fff !important;
 }
