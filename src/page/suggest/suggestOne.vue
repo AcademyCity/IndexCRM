@@ -1,24 +1,22 @@
 ﻿<template>
-    <div class="content">
-      <div class="suggestInfo">
-        <div class="suggestInfoTitle">用餐信息</div>
-        <div class="suggestInfoContent">
-          <mt-cell :key="item.message" :title="item.detail" :label="item.time">
-            <span v-if="item.type">{{item.message}}</span>
-          </mt-cell>
-        </div>
+  <div class="content">
+    <div class="suggestInfo">
+      <div class="suggestInfoTitle">用餐信息</div>
+      <div class="suggestInfoContent">
+        <mt-cell :key="item.message" :title="item.detail">
+          <span>{{item.message}}</span>
+        </mt-cell>
       </div>
-      <mt-button type="primary" @click="next">下一步</mt-button>
     </div>
+    <mt-button type="primary" @click="next">下一步</mt-button>
+  </div>
 </template>
 <script>
 
 export default {
-    data() {
+  data() {
     return {
-      items: [
-        { message: '请选择', detail: "用餐日期" }
-      ]
+      item: { message: '请选择', detail: "用餐日期" }
     }
   },
   components: {
