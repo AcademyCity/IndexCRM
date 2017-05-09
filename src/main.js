@@ -4,7 +4,7 @@ import router from './router/router'
 import store from './store'
 import request from './utils/request'
 import 'es6-promise/auto'
-import './assets/js/mint-ui/style.css'
+import './assets/style/mint-ui/style.css'
 import './assets/js/fontSize.js'
 import JsBarcode from 'jsbarcode'
 
