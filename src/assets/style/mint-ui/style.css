@@ -87,6 +87,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    height: 40px;
+    line-height: 40px;
     font-size: inherit;
     font-weight: 400;
     -webkit-box-flex: 1;
@@ -130,7 +132,7 @@
     box-sizing: border-box;
     color: inherit;
     display: block;
-    font-size: 18px;
+    font-size: .4rem;
     height: 41px;
     outline: 0;
     overflow: hidden;
@@ -177,7 +179,8 @@
 
 .mint-button--primary {
     color: #fff;
-    background-color: #86C166
+    background-color: #86C166;
+    width: 100%;
 }
 
 .mint-button--primary.is-plain {
