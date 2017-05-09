@@ -1,28 +1,4 @@
-﻿/* Cell Component */
-
-
-/* Header Component */
-
-
-/* Button Component */
-
-
-/* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
-/* Navbar Component */
-
-
-/* Checklist Component */
-
-
-/* Radio Component */
-
-
-/* z-index */
+﻿/* Header Component */
 
 .mint-header {
     -webkit-box-align: center;
@@ -97,31 +73,7 @@
 }
 
 
-/* Cell Component */
-
-
-/* Header Component */
-
-
 /* Button Component */
-
-
-/* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
-/* Navbar Component */
-
-
-/* Checklist Component */
-
-
-/* Radio Component */
-
-
-/* z-index */
 
 .mint-button {
     -webkit-appearance: none;
@@ -219,30 +171,6 @@
 
 
 /* Cell Component */
-
-
-/* Header Component */
-
-
-/* Button Component */
-
-
-/* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
-/* Navbar Component */
-
-
-/* Checklist Component */
-
-
-/* Radio Component */
-
-
-/* z-index */
 
 .mint-cell {
     background-color: #fff;
@@ -377,30 +305,6 @@
 
 /* Cell Component */
 
-
-/* Header Component */
-
-
-/* Button Component */
-
-
-/* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
-/* Navbar Component */
-
-
-/* Checklist Component */
-
-
-/* Radio Component */
-
-
-/* z-index */
-
 .mint-cell-swipe .mint-cell-wrapper {
     position: relative;
 }
@@ -427,30 +331,6 @@
 
 
 /* Cell Component */
-
-
-/* Header Component */
-
-
-/* Button Component */
-
-
-/* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
-/* Navbar Component */
-
-
-/* Checklist Component */
-
-
-/* Radio Component */
-
-
-/* z-index */
 
 .mint-field {
     display: -webkit-box;
@@ -546,30 +426,6 @@
 
 /* Cell Component */
 
-
-/* Header Component */
-
-
-/* Button Component */
-
-
-/* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
-/* Navbar Component */
-
-
-/* Checklist Component */
-
-
-/* Radio Component */
-
-
-/* z-index */
-
 .mint-badge {
     color: #fff;
     text-align: center;
@@ -612,30 +468,6 @@
 
 
 /* Cell Component */
-
-
-/* Header Component */
-
-
-/* Button Component */
-
-
-/* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
-/* Navbar Component */
-
-
-/* Checklist Component */
-
-
-/* Radio Component */
-
-
-/* z-index */
 
 .mint-switch {
     display: -webkit-box;
@@ -994,31 +826,7 @@
 }
 
 
-/* Cell Component */
-
-
-/* Header Component */
-
-
-/* Button Component */
-
-
 /* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
-/* Navbar Component */
-
-
-/* Checklist Component */
-
-
-/* Radio Component */
-
-
-/* z-index */
 
 .mint-tab-item {
     display: block;
@@ -1077,31 +885,7 @@
 }
 
 
-/* Cell Component */
-
-
-/* Header Component */
-
-
-/* Button Component */
-
-
-/* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
 /* Navbar Component */
-
-
-/* Checklist Component */
-
-
-/* Radio Component */
-
-
-/* z-index */
 
 .mint-navbar {
     background-color: #fff;
@@ -1135,31 +919,7 @@
 }
 
 
-/* Cell Component */
-
-
-/* Header Component */
-
-
-/* Button Component */
-
-
-/* Tab Item Component */
-
-
 /* Tabbar Component */
-
-
-/* Navbar Component */
-
-
-/* Checklist Component */
-
-
-/* Radio Component */
-
-
-/* z-index */
 
 .mint-tabbar {
     background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
@@ -1194,30 +954,6 @@
 
 
 /* Cell Component */
-
-
-/* Header Component */
-
-
-/* Button Component */
-
-
-/* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
-/* Navbar Component */
-
-
-/* Checklist Component */
-
-
-/* Radio Component */
-
-
-/* z-index */
 
 .mint-search {
     height: 100%;
@@ -1288,31 +1024,7 @@
 }
 
 
-/* Cell Component */
-
-
-/* Header Component */
-
-
-/* Button Component */
-
-
-/* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
-/* Navbar Component */
-
-
 /* Checklist Component */
-
-
-/* Radio Component */
-
-
-/* z-index */
 
 .mint-checklist .mint-cell {
     padding: 0;
@@ -1396,31 +1108,7 @@
 }
 
 
-/* Cell Component */
-
-
-/* Header Component */
-
-
-/* Button Component */
-
-
-/* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
-/* Navbar Component */
-
-
-/* Checklist Component */
-
-
 /* Radio Component */
-
-
-/* z-index */
 
 .mint-radiolist .mint-cell {
     padding: 0;
@@ -2317,30 +2005,6 @@
 
 /* Cell Component */
 
-
-/* Header Component */
-
-
-/* Button Component */
-
-
-/* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
-/* Navbar Component */
-
-
-/* Checklist Component */
-
-
-/* Radio Component */
-
-
-/* z-index */
-
 .mint-datetime {
     width: 100%;
 }
@@ -2371,30 +2035,6 @@
 .mint-datetime-confirm {
     float: right;
 }
-
-
-/* Cell Component */
-
-
-/* Header Component */
-
-
-/* Button Component */
-
-
-/* Tab Item Component */
-
-
-/* Tabbar Component */
-
-
-/* Navbar Component */
-
-
-/* Checklist Component */
-
-
-/* Radio Component */
 
 
 /* z-index */
