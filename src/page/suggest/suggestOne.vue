@@ -4,14 +4,13 @@
       <div class="suggestInfo">
         <div class="suggestInfoTitle">用餐信息</div>
         <div class="suggestInfoContent">
-          <mt-cell v-for="(item,index) in items" :key="item.message" :title="item.detail" :label="item.time">
-            <span v-if="item.type" style="color: #86C166;">{{"+"+item.message}}</span>
-            <span v-else style="color: #CB1B45;">{{"-"+item.message}}</span>
+          <mt-cell :key="item.message" :title="item.detail" :label="item.time">
+            <span v-if="item.type">{{item.message}}</span>
           </mt-cell>
         </div>
   
       </div>
-      <mt-button type="custom" @click="next">下一步</mt-button>
+      <mt-button type="primary" @click="next">下一步</mt-button>
     </div>
   </div>
 </template>
@@ -19,18 +18,15 @@
 
 
 export default {
-  name: 'login',
+  name: 'suggestOne',
+    data() {
+    return {
+      items: [
+        { message: '请选择', detail: "用餐日期" }
+      ]
+    }
+  },
   components: {
-    items: [
-      { message: '133', time: '2017.05.03 17:25', type: 0, detail: "兑换优惠券" },
-      { message: '90', time: '2017.05.03 17:25', type: 1, detail: "消费赠送" },
-      { message: '56', time: '2017.05.03 17:25', type: 0, detail: "兑换优惠券" },
-      { message: '59', time: '2017.05.03 17:25', type: 1, detail: "消费赠送" },
-      { message: '156', time: '2017.05.03 17:25', type: 0, detail: "兑换优惠券" },
-      { message: '88', time: '2017.05.03 17:25', type: 0, detail: "兑换优惠券" },
-      { message: '99', time: '2017.05.03 17:25', type: 1, detail: "消费赠送" },
-      { message: '321', time: '2017.05.03 17:25', type: 1, detail: "消费赠送" },
-    ]
   },
   mounted() {
   },

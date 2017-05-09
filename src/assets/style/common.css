@@ -155,11 +155,3 @@ body {
     margin-top: .35rem;
     line-height: .65rem;
 }
-
-.mint-button--custom {
-    width: 100%;
-    margin: 1rem 0;
-    background-color: #86C166;
-    font-size: .4rem !important;
-    color: #fff !important;
-}

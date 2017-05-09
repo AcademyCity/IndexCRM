@@ -1,7 +1,7 @@
 <template>
     <div class="suggestTwo">
         <div class="suggestTwoBox">
-            <mt-button type="custom" @click="sendSuggest">提交</mt-button>
+            <mt-button type="primary" @click="sendSuggest">提交</mt-button>
         </div>
     </div>
 </template>
