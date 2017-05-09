@@ -1,65 +1,63 @@
 ﻿<template>
-  <div class="userCoupon">
-    <div class="userCouponBox">
-      <mt-navbar v-model="selected">
-        <mt-tab-item id="validCoupon">可使用</mt-tab-item>
-        <mt-tab-item id="useCoupon">已使用</mt-tab-item>
-        <mt-tab-item id="invalidCoupon">已过期</mt-tab-item>
-      </mt-navbar>
+  <div class="content">
+    <mt-navbar v-model="selected">
+      <mt-tab-item id="validCoupon">可使用</mt-tab-item>
+      <mt-tab-item id="useCoupon">已使用</mt-tab-item>
+      <mt-tab-item id="invalidCoupon">已过期</mt-tab-item>
+    </mt-navbar>
   
-      <!-- tab-container -->
-      <mt-tab-container v-model="selected">
-        <mt-tab-container-item id="validCoupon">
-          <div class="couponBox" @click="couponInfo" v-for="(item,index) in items" :key="index">
-            <div class="couponImgBox" :class="{grayImg:item.isUse}">
-              <img class="couponImg" :class="{grayImg:item.isUse}" :src="item.url" />
+    <!-- tab-container -->
+    <mt-tab-container v-model="selected">
+      <mt-tab-container-item id="validCoupon">
+        <div class="couponBox" @click="couponInfo" v-for="(item,index) in items" :key="index">
+          <div class="couponImgBox" :class="{grayImg:item.isUse}">
+            <img class="couponImg" :class="{grayImg:item.isUse}" :src="item.url" />
+          </div>
+  
+          <div class="couponTag">
+            <div class="couponName" :class="{grayText:item.isUse}">
+              {{item.message}}
             </div>
-  
-            <div class="couponTag">
-              <div class="couponName" :class="{grayText:item.isUse}">
-                {{item.message}}
-              </div>
-              <div class="couponTime" :class="{grayText:item.isUse}">
-                {{item.time}}-{{item.time}} 有效
-              </div>
+            <div class="couponTime" :class="{grayText:item.isUse}">
+              {{item.time}}-{{item.time}} 有效
             </div>
           </div>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="useCoupon">
-          <div class="couponBox" v-for="(item,index) in items" :key="index">
-            <div class="couponImgBox">
-              <img class="couponImg" :src="item.url" />
-            </div>
+        </div>
+      </mt-tab-container-item>
+      <mt-tab-container-item id="useCoupon">
+        <div class="couponBox" v-for="(item,index) in items" :key="index">
+          <div class="couponImgBox">
+            <img class="couponImg" :src="item.url" />
+          </div>
   
-            <div class="couponTag">
-              <div class="couponName">
-                {{item.message}}
-              </div>
-              <div class="couponTime">
-                {{item.time}}-{{item.time}}
-              </div>
+          <div class="couponTag">
+            <div class="couponName">
+              {{item.message}}
             </div>
-            <span class="useTag">已使用</span>
+            <div class="couponTime">
+              {{item.time}}-{{item.time}}
+            </div>
           </div>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="invalidCoupon">
-          <div class="couponBox" v-for="(item,index) in items" :key="index">
-            <div class="couponImgBox grayImg">
-              <img class="couponImg grayImg" :src="item.url" />
-            </div>
-            <div class="couponTag">
-              <div class="couponName grayText">
-                {{item.message}}
-              </div>
-              <div class="couponTime grayText">
-                {{item.time}}-{{item.time}}
-              </div>
-            </div>
-            <span class="expiredTag">已过期</span>
+          <span class="useTag">已使用</span>
+        </div>
+      </mt-tab-container-item>
+      <mt-tab-container-item id="invalidCoupon">
+        <div class="couponBox" v-for="(item,index) in items" :key="index">
+          <div class="couponImgBox grayImg">
+            <img class="couponImg grayImg" :src="item.url" />
           </div>
-        </mt-tab-container-item>
-      </mt-tab-container>
-    </div>
+          <div class="couponTag">
+            <div class="couponName grayText">
+              {{item.message}}
+            </div>
+            <div class="couponTime grayText">
+              {{item.time}}-{{item.time}}
+            </div>
+          </div>
+          <span class="expiredTag">已过期</span>
+        </div>
+      </mt-tab-container-item>
+    </mt-tab-container>
   </div>
 </template>
 <script>
@@ -71,7 +69,6 @@ import e from '../../assets/images/5.jpg'
 import f from '../../assets/images/6.jpg'
 
 export default {
-  name: 'userCoupon',
   data() {
     return {
       selected: 'validCoupon',
@@ -104,11 +101,6 @@ export default {
 </script>
 
 <style scoped>
-.userCouponBox {
-  padding: 0 .5rem;
-  padding-top: 55px;
-}
-
 .mint-navbar {
   margin-bottom: 13px;
 }

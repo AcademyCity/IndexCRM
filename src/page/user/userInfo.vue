@@ -1,44 +1,40 @@
 ﻿<template>
-  <div class="userInfo">
-    <div class="userInfoBox">
-      <div class="card">
-        <span class="cardName">会员卡</span>
-        <span class="brandName">石头锅</span>
-        <span class="cardNo">
-          012000034238
-        </span>
+  <div class="content">
+    <div class="card">
+      <span class="cardName">会员卡</span>
+      <span class="brandName">石头锅</span>
+      <span class="cardNo">
+        012000034238
+      </span>
+    </div>
+    <div class="menu">
+      <div class="barCode">
+        <svg ref="code"></svg>
+        <div class="codeTag">如扫码失败请将屏幕调至最亮重新扫码</div>
       </div>
-      <div class="menu">
-        <div class="barCode">
-          <svg ref="code"></svg>
-          <div class="codeTag">如扫码失败请将屏幕调至最亮重新扫码</div>
+      <div class="menuList">
+        <div class="point iconfont" @click="point">&#xe703;
+          <div class="pointTag">积分</div>
         </div>
-        <div class="menuList">
-          <div class="point iconfont" @click="point">&#xe703;
-            <div class="pointTag">积分</div>
-          </div>
-          <div class="coupon iconfont" @click="coupon">&#xe6ed;
-            <div class="couponTag">优惠券</div>
-          </div>
+        <div class="coupon iconfont" @click="coupon">&#xe6ed;
+          <div class="couponTag">优惠券</div>
         </div>
-        <div class="menuList">
-          <div class="market iconfont" @click="market">&#xe727;
-            <div class="marketTag">积分商城</div>
-          </div>
-          <div class="suggest iconfont" @click="suggest">&#xe6f4;
-            <div class="suggestTag">线上建议</div>
-          </div>
+      </div>
+      <div class="menuList">
+        <div class="market iconfont" @click="market">&#xe727;
+          <div class="marketTag">积分商城</div>
+        </div>
+        <div class="suggest iconfont" @click="suggest">&#xe6f4;
+          <div class="suggestTag">线上建议</div>
         </div>
       </div>
     </div>
-  
   </div>
 </template>
 <script>
 
 
 export default {
-  name: 'userInfo',
   components: {
 
   },
@@ -48,7 +44,7 @@ export default {
   methods: {
     getBarCode: function (code) {
       var o = { width: 2, height: 50, displayValue: false, margin: 0 };
-       JsBarcode(this.$refs.code, code, o);
+      JsBarcode(this.$refs.code, code, o);
     },
     point: function () {
       this.$router.push({ path: '/user/userPoint' })
@@ -67,11 +63,6 @@ export default {
 </script>
 
 <style scoped>
-.userInfoBox {
-  padding: 0 .5rem;
-  padding-top: 55px;
-}
-
 .card {
   position: relative;
   text-align: center;

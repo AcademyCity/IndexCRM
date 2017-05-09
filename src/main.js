@@ -3,10 +3,12 @@ import App from './App'
 import router from './router/router'
 import store from './store'
 import request from './utils/request'
-import 'es6-promise/auto'
-import './assets/style/mint-ui/style.css'
-import './assets/js/fontSize.js'
 import JsBarcode from 'jsbarcode'
+import 'es6-promise/auto'
+import './assets/js/fontSize.js'
+import './assets/style/mint-ui/style.css'
+import './assets/style/iconfont/iconfont.css';
+import './assets/style/common.css';
 
 Vue.config.productionTip = false
 

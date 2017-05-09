@@ -1,21 +1,19 @@
 <template>
-    <div class="marketInfo">
-        <div class="marketInfoBox">
-            <div class="couponBox" @click="marketCoupon" v-for="(item,index) in items" :key="index">
-                <div class="couponImgBox">
-                    <img class="couponImg" :src="item.url" />
+    <div class="content">
+        <div class="couponBox" @click="marketCoupon" v-for="(item,index) in items" :key="index">
+            <div class="couponImgBox">
+                <img class="couponImg" :src="item.url" />
+            </div>
+            <div class="couponTag">
+                <div class="couponName">
+                    {{item.message}}
                 </div>
-                <div class="couponTag">
-                    <div class="couponName">
-                        {{item.message}}
-                    </div>
-                    <div class="couponTime">
-                        {{item.time}}-{{item.time}} 有效
-                    </div>
-                    <div class="pointIcon">
-                        <div class="couponPointIcon iconfont">&#xe703;</div>
-                        <div class="couponPointNum">兑换需积分:150</div>
-                    </div>
+                <div class="couponTime">
+                    {{item.time}}-{{item.time}} 有效
+                </div>
+                <div class="pointIcon">
+                    <div class="couponPointIcon iconfont">&#xe703;</div>
+                    <div class="couponPointNum">兑换需积分:150</div>
                 </div>
             </div>
         </div>
@@ -30,7 +28,6 @@ import e from '../../assets/images/5.jpg'
 import f from '../../assets/images/6.jpg'
 
 export default {
-    name: 'marketInfo',
     data() {
         return {
             items: [
@@ -48,7 +45,7 @@ export default {
         //   // 这里就可以通过 val 的值变更来确定
         //   console.log(val + '--' + oldVal)
         // }
-        
+
     },
     components: {
     },
@@ -57,18 +54,13 @@ export default {
     methods: {
         marketCoupon: function () {
             this.$router.push({ path: '/market/marketCoupon' })
-            
+
         }
     }
 }
 </script>
 
 <style scoped>
-.marketInfoBox {
-    padding: 0 .5rem;
-    padding-top: 55px;
-}
-
 .mint-navbar {
     margin-bottom: 13px;
 }

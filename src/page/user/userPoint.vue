@@ -1,46 +1,43 @@
 ﻿<template>
-  <div class="userPoint">
-    <div class="userPointBox">
-      <mt-navbar v-model="selected">
-        <mt-tab-item id="pointNum">我的积分</mt-tab-item>
-        <mt-tab-item id="pointRecord">积分记录</mt-tab-item>
-      </mt-navbar>
+  <div class="content">
+    <mt-navbar v-model="selected">
+      <mt-tab-item id="pointNum">我的积分</mt-tab-item>
+      <mt-tab-item id="pointRecord">积分记录</mt-tab-item>
+    </mt-navbar>
   
-      <!-- tab-container -->
-      <mt-tab-container v-model="selected">
-        <mt-tab-container-item id="pointNum">
-          <div class="pointNum">
-            1017276598
+    <!-- tab-container -->
+    <mt-tab-container v-model="selected">
+      <mt-tab-container-item id="pointNum">
+        <div class="pointNum">
+          1017276598
+        </div>
+        <div class="pointHint">
+          暂无可兑换优惠券
+        </div>
+        <div class="ruleBox">
+          <div class='ruleTitle'>积分规则</div>
+          <div class='ruleContent'>
+            <p>
+              1、消费1元赠送1积分
+              <br> 2、积分不可兑换现金，不开发票
+              <br> 3、当年累计积分，将在次年4月12日清零
+            </p>
           </div>
-          <div class="pointHint">
-            暂无可兑换优惠券
-          </div>
-          <div class="ruleBox">
-            <div class='ruleTitle'>积分规则</div>
-            <div class='ruleContent'>
-              <p>
-                1、消费1元赠送1积分
-                <br> 2、积分不可兑换现金，不开发票
-                <br> 3、当年累计积分，将在次年4月12日清零
-              </p>
-            </div>
-          </div>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="pointRecord">
-          <!--<mt-cell v-for="(item,index) in items" :key="item.message" :title="'积分:' + item.message" />-->
-          <mt-cell v-for="(item,index) in items" :key="item.message" :title="item.detail" :label="item.time">
-            <span v-if="item.type" style="color: #86C166;">{{"+"+item.message}}</span>
-            <span v-else style="color: #CB1B45;">{{"-"+item.message}}</span>
-          </mt-cell>
-        </mt-tab-container-item>
-      </mt-tab-container>
-    </div>
+        </div>
+      </mt-tab-container-item>
+      <mt-tab-container-item id="pointRecord">
+        <!--<mt-cell v-for="(item,index) in items" :key="item.message" :title="'积分:' + item.message" />-->
+        <mt-cell v-for="(item,index) in items" :key="item.message" :title="item.detail" :label="item.time">
+          <span v-if="item.type" style="color: #86C166;">{{"+"+item.message}}</span>
+          <span v-else style="color: #CB1B45;">{{"-"+item.message}}</span>
+        </mt-cell>
+      </mt-tab-container-item>
+    </mt-tab-container>
   </div>
 </template>
 <script>
 
 export default {
-  name: 'userPoint',
   data() {
     return {
       selected: 'pointNum',
@@ -72,13 +69,8 @@ export default {
 </script>
 
 <style scoped>
-.userPointBox {
-  padding: 0 .5rem;
-  padding-top: 55px;
-}
-
 .mint-navbar {
-  margin-bottom: 13px;
+  margin-bottom: .3rem;
 }
 
 .mint-navbar .mint-tab-item.is-selected {
@@ -112,14 +104,4 @@ export default {
   font-size: .25rem;
 }
 
-
-
-
-/*.mint-cell:first-child {
-  border-radius: 6px 6px 0 0;
-}
-
-.mint-cell:last-child {
-  border-radius: 0 0 6px 6px;
-}*/
 </style>

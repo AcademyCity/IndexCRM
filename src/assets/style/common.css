@@ -155,3 +155,8 @@ body {
     margin-top: .35rem;
     line-height: .65rem;
 }
+
+.content {
+    padding: 0 .5rem;
+    padding-top: 1.3rem
+}

@@ -1,34 +1,32 @@
 ﻿<template>
-    <div class="couponInfo">
-        <div class="couponInfoBox">
-            <div class="couponBox">
-                <div class="couponImgBox">
-                    <img class="couponImg" :src="item.url" />
+    <div class="content">
+        <div class="couponBox">
+            <div class="couponImgBox">
+                <img class="couponImg" :src="item.url" />
+            </div>
+            <div class="couponTag">
+                <div class="couponName" :class="{grayText:item.isUse}">
+                    {{item.message}}
                 </div>
-                <div class="couponTag">
-                    <div class="couponName" :class="{grayText:item.isUse}">
-                        {{item.message}}
-                    </div>
-                    <div class="couponTime" :class="{grayText:item.isUse}">
-                        {{item.time}}-{{item.time}} 有效
-                    </div>
+                <div class="couponTime" :class="{grayText:item.isUse}">
+                    {{item.time}}-{{item.time}} 有效
                 </div>
             </div>
-            <div class="barCode">
-                <svg ref="code"></svg>
-                <div class="codeTag">0120 0120 0003 4238</div>
-            </div>
-            <div class="ruleBox">
-                <div class='ruleTitle'>活动内容</div>
-                <div class='ruleContent'>
-                    <p>
-                        1、本券仅限堂食
-                        <br> 2、本券可兑换土豆一份
-                        <br> 3、优惠不能同享，优惠部分不开具发票
-                        <br> 4、图片仅供参考，产品以实物为准
-                        <br> 5、仅限石二锅大陆地区门店使用
-                    </p>
-                </div>
+        </div>
+        <div class="barCode">
+            <svg ref="code"></svg>
+            <div class="codeTag">0120 0120 0003 4238</div>
+        </div>
+        <div class="ruleBox">
+            <div class='ruleTitle'>活动内容</div>
+            <div class='ruleContent'>
+                <p>
+                    1、本券仅限堂食
+                    <br> 2、本券可兑换土豆一份
+                    <br> 3、优惠不能同享，优惠部分不开具发票
+                    <br> 4、图片仅供参考，产品以实物为准
+                    <br> 5、仅限石二锅大陆地区门店使用
+                </p>
             </div>
         </div>
     </div>
@@ -37,7 +35,6 @@
 import a from '../../assets/images/1.jpg'
 
 export default {
-    name: 'couponInfo',
     data() {
         return {
             item: { message: '土豆', time: '2017.05.03', url: a },
@@ -58,11 +55,6 @@ export default {
 </script>
 
 <style scoped>
-.couponInfoBox {
-    padding: 0 .5rem;
-    padding-top: 55px;
-}
-
 .couponBox {
     width: 100%;
     height: 2.4rem;

@@ -1,6 +1,5 @@
 ﻿<template>
-  <div class="suggestOne">
-    <div class="suggestOneBox">
+    <div class="content">
       <div class="suggestInfo">
         <div class="suggestInfoTitle">用餐信息</div>
         <div class="suggestInfoContent">
@@ -8,17 +7,13 @@
             <span v-if="item.type">{{item.message}}</span>
           </mt-cell>
         </div>
-  
       </div>
       <mt-button type="primary" @click="next">下一步</mt-button>
     </div>
-  </div>
 </template>
 <script>
 
-
 export default {
-  name: 'suggestOne',
     data() {
     return {
       items: [
@@ -39,11 +34,6 @@ export default {
 </script>
 
 <style scoped>
-.suggestOneBox {
-  padding: 0 .5rem;
-  padding-top: 55px
-}
-
 .suggestInfo {
   border-radius: 6px;
   background: #fff;
