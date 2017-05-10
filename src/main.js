@@ -13,15 +13,20 @@ import './assets/style/common.css';
 Vue.config.productionTip = false
 
 import {
+    Toast, 
+    MessageBox,
     Header,
     Button,
     Navbar,
     TabItem,
     TabContainer,
     TabContainerItem,
-    Cell
+    Cell,
+    DatetimePicker
 } from 'mint-ui'
 
+Vue.component(Toast.name, Toast)
+Vue.component(MessageBox.name, MessageBox)
 Vue.component(Header.name, Header)
 Vue.component(Button.name, Button)
 Vue.component(Navbar.name, Navbar)
@@ -29,6 +34,7 @@ Vue.component(TabItem.name, TabItem)
 Vue.component(TabContainer.name, TabContainer)
 Vue.component(TabContainerItem.name, TabContainerItem)
 Vue.component(Cell.name, Cell)
+Vue.component(DatetimePicker.name, DatetimePicker);
 
 Vue.prototype.$http = request
 

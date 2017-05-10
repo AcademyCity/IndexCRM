@@ -101,15 +101,6 @@ export default {
 </script>
 
 <style scoped>
-.mint-navbar {
-  margin-bottom: 13px;
-}
-
-.mint-navbar .mint-tab-item.is-selected {
-  border-bottom: 3px solid #86C166;
-  color: #86C166;
-}
-
 .couponBox {
   margin-bottom: .15rem;
   width: 100%;

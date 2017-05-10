@@ -134,6 +134,7 @@
     color: #fff;
     background-color: #86C166;
     width: 100%;
+    margin-top: 1rem;
 }
 
 .mint-button--primary.is-plain {
@@ -215,11 +216,11 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-size: .35px;
+    font-size: .38rem;
     line-height: 1;
     min-height: inherit;
     overflow: hidden;
-    padding: 0 10px;
+    padding: .12rem 0 .12rem .25rem;
     width: 100%;
     border-top: 1px #d9d9d9 solid;
 }
@@ -260,16 +261,18 @@
 
 .mint-cell-value {
     color: #888;
+    font-size: .4rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    margin-right: .25rem;
 }
 
 .mint-cell-value.is-link {
-    margin-right: 24px;
+    margin-right: 1rem;
 }
 
 .mint-cell-left {
@@ -855,10 +858,9 @@
 }
 
 .mint-tab-item-label {
-    color: inherit;
-    font-size: 12px;
+    color: #0B1013;
     line-height: 1;
-    font-size: .32rem;
+    font-size: .35rem;
 }
 
 .mint-tab-container-item {
@@ -894,11 +896,12 @@
     display: -ms-flexbox;
     display: flex;
     text-align: center;
+    margin-bottom: .3rem;
 }
 
 .mint-navbar .mint-tab-item {
-    padding: 17px 0;
-    font-size: 15px
+    padding: .4rem 0;
+    font-size: .35rem
 }
 
 .mint-navbar .mint-tab-item:last-child {
@@ -906,8 +909,8 @@
 }
 
 .mint-navbar .mint-tab-item.is-selected {
-    border-bottom: 3px solid #26a2ff;
-    color: #26a2ff;
+    border-bottom: 3px solid #86C166;
+    color: #86C166;
     margin-bottom: -3px;
 }
 
@@ -2026,7 +2029,7 @@
     text-align: center;
     line-height: 40px;
     font-size: 16px;
-    color: #26a2ff;
+    color: #86C166;
 }
 
 .mint-datetime-cancel {
