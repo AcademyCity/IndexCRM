@@ -3,22 +3,22 @@
     <div class="suggestInfo">
       <div class="suggestInfoTitle">用餐信息</div>
       <div class="suggestInfoContent">
-        <mt-cell class="suggestInfoContentItem" @click.native="openPicker" :key="item.message" :title="item.detail" is-link>
-          <span>{{item.message}}</span>
+        <mt-cell class="suggestInfoContentItem" @click.native="openPicker" :key="items[0].message" :title="items[0].detail" is-link>
+          <span>{{items[0].message}}</span>
         </mt-cell>
         <mt-datetime-picker :startDate="startDate" :endDate="endDate" v-model="nowDate"
                             type="date" ref="picker" year-format="{value} 年" 
                             month-format="{value} 月" date-format="{value} 日" 
                             @confirm="handleConfirm">
         </mt-datetime-picker>
-        <mt-cell class="suggestInfoContentItem" :key="item.message" :title="item.detail" is-link>
-          <span>{{item.message}}</span>
+        <mt-cell class="suggestInfoContentItem" :key="items[1].message" :title="items[1].detail" is-link>
+          <span>{{items[1].message}}</span>
         </mt-cell>
-        <mt-cell class="suggestInfoContentItem" :key="item.message" :title="item.detail" is-link>
-          <span>{{item.message}}</span>
+        <mt-cell class="suggestInfoContentItem" :key="items[2].message" :title="items[2].detail" is-link>
+          <span>{{items[2].message}}</span>
         </mt-cell>
-        <mt-cell class="suggestInfoContentItem" :key="item.message" :title="item.detail" is-link>
-          <span>{{item.message}}</span>
+        <mt-cell class="suggestInfoContentItem" :key="items[3].message" :title="items[3].detail" is-link>
+          <span>{{items[3].message}}</span>
         </mt-cell>
       </div>
     </div>
@@ -26,15 +26,15 @@
   </div>
 </template>
 <script>
+import moment from 'moment'
 
 export default {
   data() {
     return {
-      item: { message: '请选择', detail: "用餐日期" },
+      items: [{ message: '请选择', detail: "用餐日期" },{ message: '请选择', detail: "用餐时间" },{ message: '请选择', detail: "用餐店铺" },{ message: '请选择', detail: "交易序号" }],
       startDate: new Date("2017,1,1"),
       endDate: new Date("2027,12,31"),
-      nowDate:new Date()
-     
+      nowDate:new Date() 
     }
   },
   components: {
@@ -46,11 +46,11 @@ export default {
       this.$router.push({ path: '/suggest/suggestTwo' })
     },
     openPicker: function () {
-      console.log("xxx");
-      this.$refs.picker.open();
+      this.$refs.picker.open()
     },
     handleConfirm: function (value) {
-      this.item.message=value.toString();
+      console.log(Date.parse(value));
+      this.items[0].message=moment(Date.parse(value),"YYYY-MM-DD")
     }
   }
 }
