@@ -14,7 +14,7 @@ axios.interceptors.request.use(config => {
     config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
   }
   // 开启loading动画
-  store.dispatch('popup/loading/showLoading')
+  //store.dispatch('popup/loading/showLoading')
   return config
 }, function (error) {
   // Do something with request error
@@ -25,7 +25,7 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(response => {
   // Do something with response data
   // 关闭loading动画
-  store.dispatch('popup/loading/hideLoading')
+  //store.dispatch('popup/loading/hideLoading')
   return response.data
 }, function (error) {
   // Do something with response error

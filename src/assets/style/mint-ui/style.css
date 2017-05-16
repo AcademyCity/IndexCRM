@@ -1360,6 +1360,7 @@
     left: 50%;
     -webkit-transform: translate3d(-50%, 0, 0);
     transform: translate3d(-50%, 0, 0);
+    width: 100%;
 }
 
 .mint-popup-left {
@@ -1522,6 +1523,7 @@
 }
 
 .picker-toolbar {
+    border-bottom: solid 1px #eaeaea;
     height: 40px;
 }
 
@@ -2019,9 +2021,9 @@
     backface-visibility: hidden;
 }
 
-.mint-datetime .picker-toolbar {
+/*.mint-datetime .picker-toolbar {
     border-bottom: solid 1px #eaeaea;
-}
+}*/
 
 .mint-datetime-action {
     display: inline-block;

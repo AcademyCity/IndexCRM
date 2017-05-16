@@ -25,7 +25,9 @@ import {
     TabContainer,
     TabContainerItem,
     Cell,
-    DatetimePicker
+    DatetimePicker,
+    Popup,
+    Picker
 } from 'mint-ui'
 
 Vue.component(Toast.name, Toast)
@@ -38,6 +40,8 @@ Vue.component(TabContainer.name, TabContainer)
 Vue.component(TabContainerItem.name, TabContainerItem)
 Vue.component(Cell.name, Cell)
 Vue.component(DatetimePicker.name, DatetimePicker);
+Vue.component(Popup.name, Popup);
+Vue.component(Picker.name, Picker);
 
 Vue.prototype.$http = request
 
