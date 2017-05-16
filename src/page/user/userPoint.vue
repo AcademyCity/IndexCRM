@@ -96,4 +96,9 @@ export default {
   font-size: .25rem;
 }
 
+.mint-cell:last-child {
+    border-radius: 0;
+}
+
+
 </style>

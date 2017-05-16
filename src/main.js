@@ -27,7 +27,9 @@ import {
     Cell,
     DatetimePicker,
     Popup,
-    Picker
+    Picker,
+    Field,
+    Radio
 } from 'mint-ui'
 
 Vue.component(Toast.name, Toast)
@@ -42,18 +44,20 @@ Vue.component(Cell.name, Cell)
 Vue.component(DatetimePicker.name, DatetimePicker);
 Vue.component(Popup.name, Popup);
 Vue.component(Picker.name, Picker);
+Vue.component(Field.name, Field);
+Vue.component(Radio.name, Radio);
 
 Vue.prototype.$http = request
 
-router.beforeEach(function (to, from, next) {
+router.beforeEach(function(to, from, next) {
     store.dispatch('common/loading/showLoading')
     next()
 })
 
-router.afterEach(function (to) {
+router.afterEach(function(to) {
     document.title = to.meta.title
     store.dispatch('header/head/setHead', document.title)
-    setTimeout(function () {
+    setTimeout(function() {
         store.dispatch('common/loading/hideLoading')
     }, 300)
 
