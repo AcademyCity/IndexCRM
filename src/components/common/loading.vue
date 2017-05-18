@@ -48,8 +48,8 @@ export default {
 
 .loading-box .loader {
   position: relative;
-  border: 4px solid #ccc;
-  border-right-color: #f07c00;
+  border: 4px solid #fff;
+  border-right-color: #86C166;
   border-radius: 50%;
   display: inline-block;
   -webkit-animation: loading 0.6s linear;
@@ -60,8 +60,8 @@ export default {
 
 .loading-box .loader,
 .loading-box .loader:after {
-  width: 3em;
-  height: 3em;
+  width: 1rem;
+  height: 1rem;
   margin: 0 auto .125rem auto;
   border-radius: 50%;
 }

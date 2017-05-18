@@ -15,7 +15,7 @@
       </div>
     </div>
     <mt-button type="primary" @click="next">下一步</mt-button>
-    <mt-datetime-picker :startDate="startDate" :endDate="endDate" v-model="nowDate" type="date" ref="picker" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="handleConfirm">
+    <mt-datetime-picker :startDate="startDate" v-model="nowDate" type="date" ref="picker" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="handleConfirm">
     </mt-datetime-picker>
     <mt-popup v-model="popupTimeVisible" position="bottom" class="mint-popup-4">
       <div class="picker-toolbar">
@@ -41,8 +41,8 @@ export default {
   data() {
     return {
       items: [{ message: '请选择', detail: "用餐日期" }, { message: '请选择', detail: "用餐时间" }, { message: '请选择', detail: "用餐店铺" }, { message: '请选择', detail: "用餐店铺" }],
-      startDate: new Date("2017,1,1"),
-      endDate: new Date("2027,12,31"),
+      
+      startDate: new Date(new Date().getFullYear() + ",1,1"),
       nowDate: new Date(),
 
       popupTimeVisible: false,

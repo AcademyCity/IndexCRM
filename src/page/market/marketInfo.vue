@@ -132,7 +132,7 @@ export default {
     margin-left: .25rem;
     /*color: #0B1013;*/
     font-size: .37rem;
-    line-height: .95rem;
+    line-height: .88rem;
 }
 </style>
 

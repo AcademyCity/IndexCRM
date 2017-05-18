@@ -57,9 +57,9 @@ router.beforeEach(function(to, from, next) {
 router.afterEach(function(to) {
     document.title = to.meta.title
     store.dispatch('header/head/setHead', document.title)
-    setTimeout(function() {
-        store.dispatch('common/loading/hideLoading')
-    }, 300)
+        // setTimeout(function() {
+    store.dispatch('common/loading/hideLoading')
+        // }, 200)
 
 })
 
