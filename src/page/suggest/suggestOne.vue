@@ -19,15 +19,15 @@
     </mt-datetime-picker>
     <mt-popup v-model="popupTimeVisible" position="bottom" class="mint-popup-4">
       <div class="picker-toolbar">
-        <span class="mint-datetime-action mint-datetime-cancel" @click="cancelTime">取消</span>
-        <span class="mint-datetime-action mint-datetime-confirm" @click="selectTime">确定</span>
+        <span class="mint-datetime-action mint-datetime-cancel" @click="cancel('Time')">取消</span>
+        <span class="mint-datetime-action mint-datetime-confirm" @click="select('Time')">确定</span>
       </div>
       <mt-picker :slots="timeSlots" @change="timeChange"></mt-picker>
     </mt-popup>
     <mt-popup v-model="popupStoreVisible" position="bottom" class="mint-popup-4">
       <div class="picker-toolbar">
-        <span class="mint-datetime-action mint-datetime-cancel" @click="cancelStore">取消</span>
-        <span class="mint-datetime-action mint-datetime-confirm" @click="selectStore">确定</span>
+        <span class="mint-datetime-action mint-datetime-cancel" @click="cancel('Store')">取消</span>
+        <span class="mint-datetime-action mint-datetime-confirm" @click="select('Store')">确定</span>
       </div>
       <mt-picker :slots="storeSlots" @change="storeChange"></mt-picker>
     </mt-popup>
@@ -46,21 +46,17 @@ export default {
       nowDate: new Date(),
 
       popupTimeVisible: false,
-      timePicker: '',
+      timePicker: null,
       time: '',
       timeSlots: [{
-        flex: 1,
         values: ['14:00 之前', '14:00~17:30', '17:30~21:00', '21:00 以后'],
-        className: 'timeSlot'
       }],
 
       popupStoreVisible: false,
-      storePicker: '',
+      storePicker: null,
       store: '',
       storeSlots: [{
-        flex: 1,
         values: ['宝地广场店', '田尚坊店', '万科海上传奇店', '中原城市广场店', '春申大润发店', '曹安大润发店', '江桥万达店'],
-        className: 'storeSlot'
       }],
     }
   },
@@ -85,14 +81,6 @@ export default {
       this.timePicker = picker
       this.time = values[0]
     },
-    cancelTime: function () {
-      this.popupTimeVisible = false
-      this.timePicker.setSlotValue(0, this.time)
-    },
-    selectTime: function () {
-      this.popupTimeVisible = false
-      this.items[1].message = this.time
-    },
     openStorePicker: function () {
       this.popupStoreVisible = true
     },
@@ -100,13 +88,25 @@ export default {
       this.storePicker = picker
       this.store = values[0]
     },
-    cancelStore: function () {
-      this.popupStoreVisible = false
-      this.storePicker.setSlotValue(0, this.store)
+    select: function (value) {
+      if (value == "Time") {
+        this.popupTimeVisible = false
+        this.items[1].message = this.time
+      }
+      if (value == "Store") {
+        this.popupStoreVisible = false
+        this.items[2].message = this.store
+      }
     },
-    selectStore: function () {
-      this.popupStoreVisible = false
-      this.items[2].message = this.store
+    cancel: function (value) {
+      if (value == "Time") {
+        this.popupTimeVisible = false
+        this.timePicker.setSlotValue(0, this.time)
+      }
+      if (value == "Store") {
+        this.popupStoreVisible = false
+        this.storePicker.setSlotValue(0, this.store)
+      }
     }
   }
 }
