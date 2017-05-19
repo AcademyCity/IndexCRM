@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     login: function () {
-      this.$router.push({ path: '/user/userInfo' })
+      this.$router.push({ path: '/user/userInfo' }) 
     }
   }
 }
