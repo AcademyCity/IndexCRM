@@ -14,6 +14,7 @@ export default {
   methods: {
     login: function () {
       this.$router.push({ path: '/user/userInfo' })
+       
     }
   }
 }
