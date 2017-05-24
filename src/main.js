@@ -52,7 +52,6 @@ Vue.prototype.$http = request
 router.beforeEach(function(to, from, next) {
     store.dispatch('common/loading/showLoading')
     next()
-    console.log("xxx")
 })
 
 router.afterEach(function(to) {
