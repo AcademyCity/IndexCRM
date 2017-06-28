@@ -4,3 +4,7 @@ export const LOADING_HIDE = 'LOADING_HIDE'
 
 // header head
 export const HEAD_SET = 'HEAD_SET'
+
+// config
+export const LOGIN = 'LOGIN'
+export const LOGOUT = 'LOGOUT'

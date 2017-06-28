@@ -13,8 +13,8 @@ const actions = {
 }
 
 const mutations = {
-  [HEAD_SET](state, action) {
-    state.content = action
+  [HEAD_SET](state, data) {
+    state.content = data
   }
 }
 

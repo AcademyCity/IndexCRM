@@ -4,6 +4,7 @@ var path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
+    httpUrl:'http://api.academycity.top/',
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
@@ -23,7 +24,8 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8084,
+    httpUrl:'http://localhost:9074/',
+    port: 8084,  
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

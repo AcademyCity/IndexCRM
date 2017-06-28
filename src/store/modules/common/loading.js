@@ -17,11 +17,11 @@ const actions = {
 }
 
 const mutations = {
-  [LOADING_SHOW](state, action) {
+  [LOADING_SHOW](state, data) {
     // console.log(state.content+"s");
-    state.content = action
+    state.content = data
   },
-  [LOADING_HIDE](state, action) {
+  [LOADING_HIDE](state, data) {
     // console.log(state.content+"h");
     state.content = ''
   }
