@@ -51,47 +51,59 @@ Vue.prototype.$http = request
 
 router.beforeEach(function (to, from, next) {
     store.dispatch('common/loading/showLoading')
+
     if (!store.state.common.login.token) {  // 通过vuex state获取当前的token是否存在
 
+        var url = 'http://crm.academycity.top'
         var code = to.query.code == undefined ? '' : to.query.code
         var state = to.query.state == undefined ? '' : to.query.state
 
-        if (to.query.code != undefined) {
-            if (state.indexOf('Base') > 0) {
-                request.get('WeChat/BaseCallback?code=' + to.query.code + '&state=' + to.query.state)
+        if (code != '') {
+            if (state.indexOf('Base') >= 0) {
+                request.get('WeChat/BaseCallback?code=' + code + '&state=' + state + '&backUrl=' + to.path)
                     .then((response) => {
-                        if (response.succeed) {
-                            if (response.message.succeed){
-                                alert('获取OpenId成功')
-                                alert('获取Token成功')
-                                store.dispatch('common/login/setToken', response.message)
+                        if (response.success) {
+                            if (response.message.success) {
+                                MessageBox.alert('获取Token成功').then(action => {
+                                    store.dispatch('common/login/setToken', response.message)
+                                    next()
+                                })
                             }
                             else {
                                 location.href = response.message.message
                             }
-
                         } else {
-                            alert('获取OpenId失败')
+                            MessageBox.alert(response.message).then(action => {
+                                location.href = url + to.path;
+                            })
                         }
                     })
                     .catch((error) => {
-                        console.log('发生错误:' + error)
+                        MessageBox.alert('发生错误:' + error).then(action => {
+                            location.href = url + to.path
+                        });
                     });
             }
-            if (state.indexOf('UserInfo') > 0) {
-                request.get('WeChat/UserInfoCallback?code=' + to.query.code + '&state=' + to.query.state)
+            if (state.indexOf('UserInfo') >= 0) {
+                // MessageBox.alert('WeChat/UserInfoCallback?code=' + code + '&state=' + state);
+                request.get('WeChat/UserInfoCallback?code=' + code + '&state=' + state)
                     .then((response) => {
-                        if (response.succeed) {
-                            alert('获取OpenId成功')
-                            alert('获取Token成功')
-                            store.dispatch('common/login/setToken', response.message)
-                            //location.href = to.path + '?openId=' + response.message
+                        if (response.success) {
+                            MessageBox.alert('获取Token成功').then(action => {
+                                store.dispatch('common/login/setToken', response.message)
+                                next()
+                            });
+
                         } else {
-                            alert('获取OpenId失败')
+                            MessageBox.alert(response.message).then(action => {
+                                location.href = url + to.path
+                            });
                         }
                     })
                     .catch((error) => {
-                        console.log('发生错误:' + error)
+                        MessageBox.alert('发生错误:' + error).then(action => {
+                            location.href = url + to.path
+                        });
                     });
             }
 
@@ -102,15 +114,17 @@ router.beforeEach(function (to, from, next) {
                     location.href = response.message
                 })
                 .catch((error) => {
-                    console.log('发生错误:' + error)
+                    MessageBox.alert('发生错误:' + error).then(action => {
+                        location.href = url + to.path
+                    });
                 });
-
         }
 
     }
+    else { 
+        next()
+    }
 
-    store.dispatch('header/head/setHead', document.title)
-    next()
 })
 
 router.afterEach(function (to) {
