@@ -112,6 +112,7 @@ export default {
             this.$router.push({ path: '/suggest/suggestTwo' })
         },
         openSourcePicker: function () {
+            document.body.style.overflow = 'hidden';
             this.popupSourceVisible = true
         },
         sourceChange: function (picker, values) {
@@ -119,6 +120,7 @@ export default {
             this.source = values[0]
         },
         openFeelPicker: function (value) {
+            document.body.style.overflow = 'hidden';
             this.feelNum = value;
             this.popupFeelVisible = true
             if (this.feels[this.feelNum] == "请选择") {
@@ -133,6 +135,7 @@ export default {
             this.feel = values[0]
         },
         openSuggestPicker: function () {
+            document.body.style.overflow = 'hidden';
             this.popupSuggestVisible = true
         },
         suggestChange: function (picker, values) {
@@ -152,6 +155,7 @@ export default {
                 this.popupSuggestVisible = false
                 this.items[3].message = this.suggest
             }
+            document.body.style.overflow = 'initial';
         },
         cancel: function (value) {
             if (value == "Source") {
@@ -164,6 +168,24 @@ export default {
             if (value == "Suggest") {
                 this.popupSuggestVisible = false
                 this.suggestPicker.setSlotValue(0, this.suggest)
+            }
+            document.body.style.overflow = 'initial';
+        }
+    },
+    watch: {
+        popupSourceVisible(val) {
+            if (!val) {
+                document.body.style.overflow = 'initial';
+            }
+        },
+        popupFeelVisible(val) {
+            if (!val) {
+                document.body.style.overflow = 'initial';
+            }
+        },
+        popupSuggestVisible(val) {
+            if (!val) {
+                document.body.style.overflow = 'initial';
             }
         }
     }

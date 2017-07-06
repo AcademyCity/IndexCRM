@@ -51,7 +51,7 @@ Vue.prototype.$http = request
 
 router.beforeEach(function (to, from, next) {
     store.dispatch('common/loading/showLoading')
-
+    store.dispatch('common/login/setToken', 'xxx')
     if (!store.state.common.login.token) {  // 通过vuex state获取当前的token是否存在
 
         var url = 'http://crm.academycity.top'
@@ -121,7 +121,7 @@ router.beforeEach(function (to, from, next) {
         }
 
     }
-    else { 
+    else {
         next()
     }
 
