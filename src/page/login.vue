@@ -10,11 +10,11 @@ export default {
   components: {
   },
   mounted() {
+
   },
   methods: {
     login: function () {
       this.$router.push({ path: '/user/userInfo' })
-       
     }
   }
 }

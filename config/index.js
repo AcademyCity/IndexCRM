@@ -24,6 +24,7 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
+    //httpUrl:'http://api.academycity.top/',
     httpUrl:'http://localhost:9074/',
     port: 8084,  
     autoOpenBrowser: true,

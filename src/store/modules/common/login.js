@@ -16,7 +16,6 @@ const actions = {
 const mutations = {
   [LOGIN]: (state, data) => {
     state.token = data;
-    console.log(state.token);
   },
   [LOGOUT]: (state) => {
     state.token = null

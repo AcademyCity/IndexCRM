@@ -33,13 +33,14 @@
 </template>
 <script>
 
-
 export default {
   components: {
 
   },
   mounted() {
-    this.getBarCode("012000034238");
+    this.getBarCode("012000034238")
+    
+    this.getVipInfo()
   },
   methods: {
     getBarCode: function (code) {
@@ -57,7 +58,16 @@ export default {
     },
     suggest: function () {
       this.$router.push({ path: '/suggest/suggestOne' })
-    }
+    },
+    getVipInfo: function () {
+      this.$http.get('Vip/GetVip?openId=oSfgaxG5VurYJG-t7Gxu1T64WxHU')
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+
+        });
+    },
   }
 }
 </script>
