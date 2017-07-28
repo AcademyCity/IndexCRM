@@ -60,8 +60,10 @@ export default {
       this.$router.push({ path: '/suggest/suggestOne' })
     },
     getVipInfo: function () {
-      this.$http.get('Vip/GetVip?openId=oSfgaxG5VurYJG-t7Gxu1T64WxHU')
+      this.$http.get('Vip/GetVip?openId=' + this.$store.state.common.login.token)
         .then((response) => {
+          alter(response);
+          
           console.log(response);
         })
         .catch((error) => {

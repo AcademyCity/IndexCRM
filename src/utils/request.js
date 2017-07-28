@@ -9,13 +9,13 @@ axios.interceptors.request.use(config => {
   // Do something before request is sent
   // config.withCredentials = true  // 需要跨域打开此配置
   // post提交 data存在 并且 data不是FormData对象时对数据进行json化处理
-  if (config.method === 'post' && config.data && config.data.constructor !== FormData) {
-    config.data = qs.stringify(config.data)
-    config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-    config.headers['Authorization'] = 'BasicAuth ' + store.state.common.login.token
-  }
+  // if (config.method === 'post' && config.data && config.data.constructor !== FormData) {
+  //   config.data = qs.stringify(config.data)
+  //   config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+  //   config.headers['Authorization'] = 'BasicAuth ' + store.state.common.login.token
+  // }
   config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-  config.headers['Authorization'] = 'BasicAuth 87489745' + store.state.common.login.token
+  config.headers['Authorization'] = 'Auth ' + store.state.common.login.token
   // 开启loading动画
   //store.dispatch('popup/loading/showLoading')
   return config
