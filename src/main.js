@@ -51,7 +51,7 @@ Vue.prototype.$http = request
 
 router.beforeEach(function (to, from, next) {
     store.dispatch('common/loading/showLoading')
-    store.dispatch('common/login/setToken', 'oSfgaxG5VurYJG-t7Gxu1T64WxHU')
+    //store.dispatch('common/login/setToken', 'oSfgaxG5VurYJG-t7Gxu1T64WxHU')
     if (!store.state.common.login.token) {  // 通过vuex state获取当前的token是否存在
 
         var url = 'http://crm.academycity.top'
@@ -65,7 +65,7 @@ router.beforeEach(function (to, from, next) {
                         if (response.success) {
                             if (response.message.success) {
                                 MessageBox.alert('获取Token成功').then(action => {
-                                    store.dispatch('common/login/setToken', response.message)
+                                    store.dispatch('common/login/setToken', response.message.message)
                                     next()
                                 })
                             }

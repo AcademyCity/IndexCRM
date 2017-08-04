@@ -15,7 +15,8 @@ axios.interceptors.request.use(config => {
   //   config.headers['Authorization'] = 'BasicAuth ' + store.state.common.login.token
   // }
   config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-  config.headers['Authorization'] = 'Auth ' + store.state.common.login.token
+  config.headers['Authorization'] = 'Auth ' + store.state.common.login.token +""
+
   // 开启loading动画
   //store.dispatch('popup/loading/showLoading')
   return config
