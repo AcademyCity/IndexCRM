@@ -35,7 +35,6 @@
 </template>
 <script>
 import Moment from 'moment'
-import { MessageBox } from 'mint-ui'
 
 export default {
   data() {

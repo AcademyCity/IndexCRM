@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div class="content">
         <div class="suggestInfo">
             <div class="suggestInfoTitle">{{items[0].detail}}</div>

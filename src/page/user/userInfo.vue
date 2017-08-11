@@ -4,7 +4,7 @@
       <span class="cardName">会员卡</span>
       <span class="brandName">石头锅</span>
       <span class="cardNo">
-        012000034238
+        {{cardNo}}
       </span>
     </div>
     <div class="menu">
@@ -32,15 +32,16 @@
   </div>
 </template>
 <script>
+import { MessageBox } from 'mint-ui'
 
 export default {
-  components: {
-
+   data() {
+    return {
+      cardNo: this.$store.state.common.login.vipCode
+    }
   },
   mounted() {
-    this.getBarCode("012000034238")
-    
-    this.getVipInfo()
+    this.getBarCode(this.$store.state.common.login.vipCode);
   },
   methods: {
     getBarCode: function (code) {
@@ -58,17 +59,7 @@ export default {
     },
     suggest: function () {
       this.$router.push({ path: '/suggest/suggestOne' })
-    },
-    getVipInfo: function () {
-      alert(this.$store.state.common.login.token);
-      this.$http.get('Vip/GetVip?openId=' + this.$store.state.common.login.token)
-        .then((response) => {
-            alert(response);
-        })
-        .catch((error) => {
-
-        });
-    },
+    }
   }
 }
 </script>
