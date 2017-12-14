@@ -1,35 +1,36 @@
 ﻿import {
-  LOGIN,
-  LOGOUT
+    LOGIN,
+    LOGOUT
 } from '../../types'
 
 const state = {
-  token: null,
-  vipCode: null
+    token: null,
+    openId: null,
+    vipCode: null
 }
 
 const actions = {
-  ['setToken']({ commit }, content = ["", ""]) {
-    commit(LOGIN, content)
-  }
+    ['setToken']({ commit }, content = ["", "", ""]) {
+        commit(LOGIN, content)
+    }
 }
 
 const mutations = {
-  [LOGIN]: (state, data) => {
-    console.log(data)
-    state.token = data[0]
-    state.vipCode = data[1]
-  },
-  [LOGOUT]: (state) => {
-    state.token = null
-    state.vipCode = null
-  }
+    [LOGIN]: (state, data) => {
+        state.token = data[0]
+        state.openId = data[1]
+        state.vipCode = data[2]
+    },
+    [LOGOUT]: (state) => {
+        state.token = null
+        state.openId = null
+        state.vipCode = null
+    }
 }
 
 export default {
-  namespaced: true,
-  state,
-  actions,
-  mutations
+    namespaced: true,
+    state,
+    actions,
+    mutations
 }
-

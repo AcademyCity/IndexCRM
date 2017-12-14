@@ -7,19 +7,19 @@ import hearerHead from './modules/header/head'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  modules: {
-    common: {
-      namespaced: true,
-      modules: {
-        loading: commonLoading,
-        login: commonLogin
-      }
-    },
-    header: {
-      namespaced: true,
-      modules: {
-        head: hearerHead
-      }
+    modules: {
+        common: {
+            namespaced: true,
+            modules: {
+                loading: commonLoading,
+                login: commonLogin
+            }
+        },
+        header: {
+            namespaced: true,
+            modules: {
+                head: hearerHead
+            }
+        }
     }
-  }
 })

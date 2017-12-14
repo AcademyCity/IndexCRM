@@ -49,10 +49,10 @@ Vue.component(Radio.name, Radio);
 
 Vue.prototype.$http = request
 
-router.beforeEach(function (to, from, next) {
+router.beforeEach(function(to, from, next) {
     store.dispatch('common/loading/showLoading')
-    store.dispatch('common/login/setToken', ['oSfgaxG5VurYJG-t7Gxu1T64WxHU', '012000000001'])
-    if (!store.state.common.login.token) {  // 通过vuex state获取当前的token是否存在
+    store.dispatch('common/login/setToken', ['oSfgaxG5VurYJG-t7Gxu1T64WxHU', 'oSfgaxG5VurYJG-t7Gxu1T64WxHU', '012000000001'])
+    if (!store.state.common.login.token) { // 通过vuex state获取当前的token是否存在
 
         var url = 'http://crm.academycity.top'
         var code = to.query.code == undefined ? '' : to.query.code
@@ -65,11 +65,10 @@ router.beforeEach(function (to, from, next) {
                         if (response.success) {
                             if (response.message.success) {
                                 MessageBox.alert('获取Token成功').then(action => {
-                                    store.dispatch('common/login/setToken', [response.message.message.openId, response.message.message.vipCode])
+                                    store.dispatch('common/login/setToken', [response.message.message.token, response.message.message.openId, response.message.message.vipCode])
                                     next()
                                 })
-                            }
-                            else {
+                            } else {
                                 location.href = response.message.message
                             }
                         } else {
@@ -90,7 +89,7 @@ router.beforeEach(function (to, from, next) {
                     .then((response) => {
                         if (response.success) {
                             MessageBox.alert('获取Token成功').then(action => {
-                                store.dispatch('common/login/setToken', [response.message.openId, response.message.vipCode])
+                                store.dispatch('common/login/setToken', [response.message.message.token, response.message.openId, response.message.vipCode])
                                 next()
                             });
 
@@ -106,9 +105,7 @@ router.beforeEach(function (to, from, next) {
                         });
                     });
             }
-
-        }
-        else {
+        } else {
             request.get('WeChat/GetBaseUrl?backUrl=' + to.path)
                 .then((response) => {
                     location.href = response.message
@@ -120,19 +117,18 @@ router.beforeEach(function (to, from, next) {
                 });
         }
 
-    }
-    else {
+    } else {
         next()
     }
 
 })
 
-router.afterEach(function (to) {
+router.afterEach(function(to) {
     document.title = to.meta.title
     store.dispatch('header/head/setHead', document.title)
-    // setTimeout(function() {
+        // setTimeout(function() {
     store.dispatch('common/loading/hideLoading')
-    // }, 200)
+        // }, 200)
 
 })
 
