@@ -10,8 +10,11 @@ const state = {
 }
 
 const actions = {
-    ['setToken']({ commit }, content = ["", "", ""]) {
+    ['logIn']({ commit }, content = ["", "", ""]) {
         commit(LOGIN, content)
+    },
+    ['logOut']({ commit }) {
+        commit(LOGOUT)
     }
 }
 

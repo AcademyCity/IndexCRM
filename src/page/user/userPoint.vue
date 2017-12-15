@@ -36,6 +36,8 @@
   </div>
 </template>
 <script>
+import { MessageBox } from "mint-ui"
+
 export default {
   data() {
     return {
@@ -51,18 +53,24 @@ export default {
   },
   methods: {
     getVipPoint: function() {
-      this.$http.get("Point/GetVipPoint?openId=" + this.$store.state.common.login.openId)
+      this.$http.get("Point/GetVipPoint?openId=" + this.$store.state.common.login.openId )
         .then(response => {
-          if(response.success){
-            this.vipPoint=response.message.score,
-            this.couponName="可兑换优惠券【"+response.message.couponName+"】",
-            this.items=response.message.pointRecord
+          if (response.success) {
+            this.vipPoint = response.message.score,
+            this.couponName = "可兑换优惠券【" + response.message.couponName + "】",
+            this.items = response.message.pointRecord
+          } else {
+            MessageBox.alert(response.message).then(action => {
+              this.$store.dispatch('common/login/logOut')
+              window.location.reload();
+            });
           }
-            console.log(response);
-
         })
         .catch(error => {
-    
+            MessageBox.alert('发生错误:' + error).then(action => {
+              this.$store.dispatch('common/login/logOut')
+              window.location.reload();
+            });
         });
     }
   }

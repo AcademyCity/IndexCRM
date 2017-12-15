@@ -30,31 +30,44 @@ import f from '../../assets/images/6.jpg'
 export default {
     data() {
         return {
-            items: [
-                { message: '土豆', time: '2017.05.03', url: a },
-                { message: '樱桃谷鸭血', time: '2017.05.03', url: b },
-                { message: '进口原块牛肉(小)', time: '2017.05.03', url: c },
-                { message: '进口原块牛肉套餐', time: '2017.05.03', url: d },
-                { message: '铁棍山药', time: '2017.05.03', url: e },
-                { message: '台式花枝丸', time: '2017.05.03', url: f }
-            ]
+            items: null
         }
-    },
-    watch: {
-        // selected: function (val, oldVal) {
-        //   // 这里就可以通过 val 的值变更来确定
-        //   console.log(val + '--' + oldVal)
-        // }
-
+        
+        // { message: '土豆', time: '2017.05.03', url: a },
+        // { message: '樱桃谷鸭血', time: '2017.05.03', url: b },
+        // { message: '进口原块牛肉(小)', time: '2017.05.03', url: c },
+        // { message: '进口原块牛肉套餐', time: '2017.05.03', url: d },
+        // { message: '铁棍山药', time: '2017.05.03', url: e },
+        // { message: '台式花枝丸', time: '2017.05.03', url: f }
+            
     },
     components: {
     },
     mounted() {
+        this.getShowCoupon();
     },
     methods: {
         marketCoupon: function () {
             this.$router.push({ path: '/market/marketCoupon' })
-
+        },
+        getShowCoupon: function() {
+        this.$http.get("Coupon/GetShowCoupon")
+            .then(response => {
+            if (response.success) {
+                this.items = response.message
+            } else {
+                MessageBox.alert(response.message).then(action => {
+                this.$store.dispatch('common/login/logOut')
+                window.location.reload();
+                });
+            }
+            })
+            .catch(error => {
+                MessageBox.alert('发生错误:' + error).then(action => {
+                this.$store.dispatch('common/login/logOut')
+                window.location.reload();
+                });
+            });
         }
     }
 }
