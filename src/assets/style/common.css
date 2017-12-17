@@ -160,3 +160,12 @@ body {
     padding: 0 .5rem;
     padding-top: 1.3rem
 }
+
+.mint-msgbox-confirm {
+    color: #86C166;
+    width: 50%;
+}
+
+.mint-msgbox-confirm:active {
+    color: #86C166; 
+}

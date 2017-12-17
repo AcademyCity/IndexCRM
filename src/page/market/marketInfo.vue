@@ -1,32 +1,29 @@
 <template>
     <div class="content">
-        <div class="couponBox" @click="marketCoupon" v-for="(item,index) in items" :key="index">
+        <div class="couponBox" @click="marketCoupon(item.CouponConfigId)" v-for="(item,index) in items" :key="index">
             <div class="couponImgBox">
-                <img class="couponImg" :src="item.url" />
+                <img class="couponImg" :src="item.CouponImg" />
             </div>
             <div class="couponTag">
                 <div class="couponName">
-                    {{item.message}}
+                    {{item.CouponName}}
                 </div>
-                <div class="couponTime">
-                    {{item.time}}-{{item.time}} 有效
+                <div v-if="item.ValidityMode=='1'" class="couponTime">
+                    {{item.StartTime.replace('T',' ').substr(0 , 10)}} 至 {{item.EndTime.replace('T',' ').substr(0 , 10)}} 有效
+                </div>
+                <div v-if="item.ValidityMode=='2'" class="couponTime">
+                    领取后第 {{item.EffectDate}} 天开始，{{item.ValidDate}} 天内有效
                 </div>
                 <div class="pointIcon">
                     <div class="couponPointIcon iconfont">&#xe703;</div>
-                    <div class="couponPointNum">兑换需积分:150</div>
+                    <div class="couponPointNum">兑换需积分:{{item.CouponPoint}}</div>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
-import a from '../../assets/images/1.jpg'
-import b from '../../assets/images/2.jpg'
-import c from '../../assets/images/3.jpg'
-import d from '../../assets/images/4.jpg'
-import e from '../../assets/images/5.jpg'
-import f from '../../assets/images/6.jpg'
-
+import { MessageBox } from "mint-ui"
 export default {
     data() {
         return {
@@ -47,8 +44,8 @@ export default {
         this.getShowCoupon();
     },
     methods: {
-        marketCoupon: function () {
-            this.$router.push({ path: '/market/marketCoupon' })
+        marketCoupon: function (CouponConfigId) {
+            this.$router.push({ path: '/market/marketCoupon', query:{ couponConfigId:  CouponConfigId}  })
         },
         getShowCoupon: function() {
         this.$http.get("Coupon/GetShowCoupon")
@@ -123,7 +120,7 @@ export default {
 }
 
 .couponTime {
-    font-size: .35rem;
+    font-size: .33rem;
     color: #0B1013;
     height: .7rem;
 }
