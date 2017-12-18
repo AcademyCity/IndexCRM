@@ -48,14 +48,18 @@ export default {
       timePicker: null,
       time: '',
       timeSlots: [{
+        flex: 1,
         values: ['14:00 之前', '14:00~17:30', '17:30~21:00', '21:00 以后'],
+        className: 'slot1'
       }],
 
       popupStoreVisible: false,
       storePicker: null,
       store: '',
       storeSlots: [{
+        flex: 1,
         values: ['宝地广场店', '田尚坊店', '万科海上传奇店', '中原城市广场店', '春申大润发店', '曹安大润发店', '江桥万达店'],
+        className: 'slot1'
       }],
     }
   },
