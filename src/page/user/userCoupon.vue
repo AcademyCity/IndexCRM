@@ -9,87 +9,110 @@
     <!-- tab-container -->
     <mt-tab-container v-model="selected">
       <mt-tab-container-item id="validCoupon">
-        <div class="couponBox" @click="couponInfo" v-for="(item,index) in items" :key="index">
-          <div class="couponImgBox" :class="{grayImg:item.isUse}">
-            <img class="couponImg" :class="{grayImg:item.isUse}" :src="item.url" />
+        <div class="couponBox" @click="couponInfo(item)" v-for="(item,index) in items" :key="index" v-if="!item.isUse && !isExpired(item.EndTime)">
+          <div class="couponImgBox" :class="{grayImg:!isUsable(item.StartTime)}">
+            <img class="couponImg" :class="{grayImg:!isUsable(item.StartTime)}" :src="item.CouponImg" />
           </div>
   
           <div class="couponTag">
-            <div class="couponName" :class="{grayText:item.isUse}">
-              {{item.message}}
+            <div class="couponName" :class="{grayText:!isUsable(item.StartTime)}">
+              {{item.CouponName}}
             </div>
-            <div class="couponTime" :class="{grayText:item.isUse}">
-              {{item.time}}-{{item.time}} 有效
+            <div class="couponTime" :class="{grayText:!isUsable(item.StartTime)}">
+              {{item.StartTime.replace('T',' ').substr(0 , 10)}} 至 {{item.EndTime.replace('T',' ').substr(0 , 10)}} 有效
             </div>
           </div>
         </div>
       </mt-tab-container-item>
       <mt-tab-container-item id="useCoupon">
-        <div class="couponBox" v-for="(item,index) in items" :key="index">
-          <div class="couponImgBox">
-            <img class="couponImg" :src="item.url" />
+        <div class="couponBox" v-for="(item,index) in items" :key="index" v-if="item.isUse">
+          <div class="couponImgBox grayImg">
+            <img class="couponImg grayImg" :src="item.CouponImg" />
           </div>
   
           <div class="couponTag">
-            <div class="couponName">
-              {{item.message}}
+            <div class="couponName grayText">
+              {{item.CouponName}}
             </div>
-            <div class="couponTime">
-              {{item.time}}-{{item.time}}
+            <div class="couponTime grayText">
+              {{item.StartTime.replace('T',' ').substr(0 , 10)}} 至 {{item.EndTime.replace('T',' ').substr(0 , 10)}} 有效
             </div>
           </div>
           <span class="useTag">已使用</span>
         </div>
       </mt-tab-container-item>
       <mt-tab-container-item id="invalidCoupon">
-        <div class="couponBox" v-for="(item,index) in items" :key="index">
+        <div class="couponBox" v-for="(item,index) in items" :key="index"  v-if="!item.isUse && isExpired(item.EndTime)">
           <div class="couponImgBox grayImg">
-            <img class="couponImg grayImg" :src="item.url" />
+            <img class="couponImg grayImg" :src="item.CouponImg" />
           </div>
           <div class="couponTag">
             <div class="couponName grayText">
-              {{item.message}}
+              {{item.CouponName}}
             </div>
             <div class="couponTime grayText">
-              {{item.time}}-{{item.time}}
+              {{item.StartTime.replace('T',' ').substr(0 , 10)}} 至 {{item.EndTime.replace('T',' ').substr(0 , 10)}} 有效
             </div>
           </div>
-          <span class="expiredTag">已过期</span>
+          <span class="useTag">已过期</span>
         </div>
       </mt-tab-container-item>
     </mt-tab-container>
   </div>
 </template>
 <script>
-import a from '../../assets/images/1.jpg'
-import b from '../../assets/images/2.jpg'
-import c from '../../assets/images/3.jpg'
-import d from '../../assets/images/4.jpg'
-import e from '../../assets/images/5.jpg'
-import f from '../../assets/images/6.jpg'
-
+import { MessageBox } from "mint-ui"
 export default {
   data() {
     return {
       selected: 'validCoupon',
-      items: [
-        { message: '土豆', time: '2017.05.03', url: a, isUse: false },
-        { message: '樱桃谷鸭血', time: '2017.05.03', url: b, isUse: false },
-        { message: '进口原块牛肉(小)', time: '2017.05.03', url: c, isUse: false },
-        { message: '进口原块牛肉套餐', time: '2017.05.03', url: d, isUse: true },
-        { message: '铁棍山药', time: '2017.05.03', url: e, isUse: false },
-        { message: '台式花枝丸', time: '2017.05.03', url: f, isUse: true }
-      ]
+      items: null
+      //  [
+      //   { message: '土豆', time: '2017.05.03', url: a, isUse: false },
+      //   { message: '樱桃谷鸭血', time: '2017.05.03', url: b, isUse: false },
+      //   { message: '进口原块牛肉(小)', time: '2017.05.03', url: c, isUse: false },
+      //   { message: '进口原块牛肉套餐', time: '2017.05.03', url: d, isUse: true },
+      //   { message: '铁棍山药', time: '2017.05.03', url: e, isUse: false },
+      //   { message: '台式花枝丸', time: '2017.05.03', url: f, isUse: true }
+      // ]
     }
-  },
-  components: {
   },
   mounted() {
+ 
+    this.getVipCoupon();
+
   },
   methods: {
-    couponInfo: function () {
-      this.$router.push({ path: '/coupon/couponInfo' })
-    }
+    couponInfo: function (obj) {
+      if (this.isUsable(obj.StartTime)) {
+          this.$router.push({ path: '/coupon/couponInfo' , query:{ couponId:  obj.CouponId}})
+      }
+    },
+    isExpired: function(EndTime){
+        return new Date(new Date(EndTime).toDateString())<new Date(new Date().toDateString());
+    },
+    isUsable: function(StartTime){
+        return new Date(new Date(StartTime).toDateString())<=new Date(new Date().toDateString());
+    },
+    getVipCoupon: function() {
+      this.$http.get("Coupon/GetVipCoupon?openId="+ this.$store.state.common.login.openId)
+          .then(response => {
+          if (response.success) {
+              this.items = response.message
+          } else {
+              MessageBox.alert(response.message).then(action => {
+              this.$store.dispatch('common/login/logOut')
+              window.location.reload();
+              });
+          }
+          })
+          .catch(error => {
+              MessageBox.alert('发生错误:' + error).then(action => {
+              this.$store.dispatch('common/login/logOut')
+              window.location.reload();
+              });
+          });
+      }
   }
 }
 </script>
@@ -148,7 +171,7 @@ export default {
 }
 
 .couponTime {
-  font-size: .35rem;
+  font-size: .33rem;
   color: #0B1013;
   height: .7rem;
 }

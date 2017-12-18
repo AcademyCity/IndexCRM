@@ -2,54 +2,74 @@
     <div class="content">
         <div class="couponBox">
             <div class="couponImgBox">
-                <img class="couponImg" :src="item.url" />
+                <img class="couponImg" :src="item.CouponImg" />
             </div>
             <div class="couponTag">
-                <div class="couponName" :class="{grayText:item.isUse}">
-                    {{item.message}}
+                <div class="couponName">
+                    {{item.CouponName}}
                 </div>
-                <div class="couponTime" :class="{grayText:item.isUse}">
-                    {{item.time}}-{{item.time}} 有效
+                <div class="couponTime">
+                    {{item.StartTime.replace('T',' ').substr(0 , 10)}} 至 {{item.EndTime.replace('T',' ').substr(0 , 10)}} 有效
                 </div>
             </div>
         </div>
         <div class="barCode">
             <svg ref="code"></svg>
-            <div class="codeTag">0120 0120 0003 4238</div>
+            <div class="codeTag">{{item.CouponCode}}</div>
         </div>
         <div class="ruleBox">
             <div class='ruleTitle'>活动内容</div>
             <div class='ruleContent'>
-                <p>
-                    1、本券仅限堂食
+                <p v-html="item.CouponExplain">
+                    <!-- 1、本券仅限堂食
                     <br> 2、本券可兑换土豆一份
                     <br> 3、优惠不能同享，优惠部分不开具发票
                     <br> 4、图片仅供参考，产品以实物为准
-                    <br> 5、仅限石二锅大陆地区门店使用
+                    <br> 5、仅限石二锅大陆地区门店使用 -->
                 </p>
             </div>
         </div>
     </div>
 </template>
 <script>
-import a from '../../assets/images/1.jpg'
+import { MessageBox } from "mint-ui"
 
 export default {
     data() {
         return {
-            item: { message: '土豆', time: '2017.05.03', url: a },
+            item: {StartTime:"",EndTime:""}
         }
     },
     components: {
     },
     mounted() {
-        this.getBarCode("012000034238");
+        this.getShowCoupon();
     },
     methods: {
         getBarCode: function (code) {
             var o = { width: 2, height: 50, displayValue: false, margin: 0 }
             JsBarcode(this.$refs.code, code, o);
-        }
+        },
+        getShowCoupon: function() {
+        this.$http.get("Coupon/GetCoupon?couponId=" + this.$route.query.couponId)
+            .then(response => {
+            if (response.success) {
+                this.getBarCode(response.message.CouponCode);
+                this.item = response.message
+            } else {
+                MessageBox.alert(response.message).then(action => {
+                    this.$store.dispatch('common/login/logOut')
+                    window.location.reload();
+                    });
+                }
+            })
+            .catch(error => {
+                MessageBox.alert('发生错误:' + error).then(action => {
+                    this.$store.dispatch('common/login/logOut')
+                    window.location.reload();
+                });
+            });
+        },
     }
 }
 </script>
@@ -91,7 +111,7 @@ export default {
 }
 
 .couponTime {
-    font-size: .37rem;
+    font-size: .34rem;
     color: #ffffff;
     height: .55rem;
 }

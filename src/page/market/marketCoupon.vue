@@ -40,14 +40,13 @@
     </div>
 </template>
 <script>
-import a from '../../assets/images/1.jpg'
+
 import { MessageBox } from "mint-ui"
 
 export default {
     data() {
         return {
-            item : null 
-            // { message: '土豆', time: '2017.05.03', url: a }
+            item: {StartTime:"",EndTime:""}
         }
     },
     mounted() {
@@ -57,7 +56,6 @@ export default {
         getShowCoupon: function() {
         this.$http.get("Coupon/GetShowCouponInfo?couponConfigId=" + this.$route.query.couponConfigId)
             .then(response => {
-                console.log(response);
             if (response.success) {
                 this.item = response.message
             } else {
