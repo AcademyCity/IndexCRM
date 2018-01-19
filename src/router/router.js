@@ -17,9 +17,9 @@ const suggestTwo = r => require.ensure([], () => r(require('../page/suggest/sugg
 const router = [
     //默认页
     {
-        meta: { title: '会员登录' },
+        meta: { title: '会员中心' },
         path: '',
-        redirect: '/login'
+        redirect: '/user/userInfo'
     },
     //会员登录
     {

@@ -36,67 +36,94 @@
             <div class="couponPointTag">兑换需积分</div>
             <div class="couponPointNum">{{item.CouponPoint}}</div>
         </div>
-        <mt-button type="primary" @click="exChangeCoupon(item.CouponConfigId)">立即兑换</mt-button>
+        <mt-button type="primary" @click="exChangeCoupon(item.CouponConfigId)" v-if="item.ValidityMode=='1'&&!isExpired(item.EndTime)">立即兑换</mt-button>
+        <mt-button type="primary" @click="exChangeCoupon(item.CouponConfigId)" v-if="item.ValidityMode=='2'">立即兑换</mt-button>
     </div>
 </template>
 <script>
-
-import { MessageBox } from "mint-ui"
+import { MessageBox } from "mint-ui";
+import { Toast } from "mint-ui";
 
 export default {
-    data() {
-        return {
-            item: {StartTime:"",EndTime:""}
-        }
+  data() {
+    return {
+      item: { StartTime: "", EndTime: "" }
+    };
+  },
+  mounted() {
+    this.getShowCoupon();
+  },
+  methods: {
+    isExpired: function(EndTime) {
+      EndTime = EndTime.replace("T", " ").substr(0, 10);
+      return (
+        new Date(new Date(EndTime).toDateString()) <
+        new Date(new Date().toDateString())
+      );
     },
-    mounted() {
-        this.getShowCoupon()
+    getShowCoupon: function() {
+      this.$http
+        .get(
+          "Coupon/GetShowCouponInfo?couponConfigId=" +
+            this.$route.query.couponConfigId
+        )
+        .then(response => {
+          if (response.success) {
+            this.item = response.message;
+          } else {
+            MessageBox.alert(response.message).then(action => {
+              this.$store.dispatch("common/login/logOut");
+              window.location.reload();
+            });
+          }
+        })
+        .catch(error => {
+          MessageBox.alert("发生错误:" + error).then(action => {
+            this.$store.dispatch("common/login/logOut");
+            window.location.reload();
+          });
+        });
     },
-    methods: {
-        getShowCoupon: function() {
-        this.$http.get("Coupon/GetShowCouponInfo?couponConfigId=" + this.$route.query.couponConfigId)
-            .then(response => {
-            if (response.success) {
-                this.item = response.message
-            } else {
-                MessageBox.alert(response.message).then(action => {
-                    this.$store.dispatch('common/login/logOut')
-                    window.location.reload();
-                    });
-                }
-            })
-            .catch(error => {
-                MessageBox.alert('发生错误:' + error).then(action => {
-                    this.$store.dispatch('common/login/logOut')
-                    window.location.reload();
-                });
+    exChangeCoupon: function(CouponConfigId) {
+      this.$http
+        .get(
+          "Coupon/ExChangeCoupon?couponConfigId=" +
+            CouponConfigId +
+            "&openId=" +
+            this.$store.state.common.login.openId
+        )
+        .then(response => {
+          if (response.success) {
+            Toast({
+              message: response.message,
+              position: "bottom",
+              duration: 2000
             });
-        },
-        exChangeCoupon: function(CouponConfigId) {
-        this.$http.get("Coupon/ExChangeCoupon?couponConfigId=" + CouponConfigId +"&openId="+ this.$store.state.common.login.openId)
-            .then(response => {
-            if (response.success) {
-                MessageBox.alert(response.message).then(action => {
-                    this.$router.push({ path: '/user/userCoupon' })
-                });
+            this.$router.push({ path: "/user/userCoupon" });
+          } else {
+            if (response.message != "积分不足") {
+              MessageBox.alert(response.message).then(action => {
+                this.$store.dispatch("common/login/logOut");
+                window.location.reload();
+              });
             } else {
-                MessageBox.alert(response.message).then(action => {
-                        if(response.message!="积分不足！"){
-                            this.$store.dispatch('common/login/logOut')
-                            window.location.reload();
-                        }
-                    });
-                }
-            })
-            .catch(error => {
-                MessageBox.alert('发生错误:' + error).then(action => {
-                    this.$store.dispatch('common/login/logOut')
-                    window.location.reload();
-                });
-            });
-        },       
+              Toast({
+                message: response.message,
+                position: "bottom",
+                duration: 2000
+              });
+            }
+          }
+        })
+        .catch(error => {
+          MessageBox.alert("发生错误:" + error).then(action => {
+            this.$store.dispatch("common/login/logOut");
+            window.location.reload();
+          });
+        });
     }
-}
+  }
+};
 </script>
 
 <style scoped>

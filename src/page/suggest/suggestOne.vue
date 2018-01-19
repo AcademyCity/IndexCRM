@@ -15,7 +15,8 @@
       </div>
     </div>
     <mt-button type="primary" @click="next">下一步</mt-button>
-    <mt-datetime-picker :startDate="startDate" v-model="nowDate" type="date" ref="picker" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="handleConfirm">
+
+    <mt-datetime-picker :startDate="startDate" v-model="this.nowDate" type="date" ref="picker" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="handleConfirm">
     </mt-datetime-picker>
     <mt-popup v-model="popupTimeVisible" position="bottom" class="mint-popup-4">
       <div class="picker-toolbar">
@@ -34,85 +35,111 @@
   </div>
 </template>
 <script>
-import Moment from 'moment'
+import Moment from "moment";
+import { Toast } from "mint-ui";
 
 export default {
   data() {
     return {
-      items: [{ message: '请选择', detail: "用餐日期" }, { message: '请选择', detail: "用餐时间" }, { message: '请选择', detail: "用餐店铺" }, { message: '请选择', detail: "用餐店铺" }],
-      
+      items: [
+        { message: "请选择", detail: "用餐日期" },
+        { message: "请选择", detail: "用餐时间" },
+        { message: "请选择", detail: "用餐店铺" }
+      ],
+
       startDate: new Date(new Date().getFullYear() + ",1,1"),
       nowDate: new Date(),
 
       popupTimeVisible: false,
       timePicker: null,
-      time: '',
-      timeSlots: [{
-        flex: 1,
-        values: ['14:00 之前', '14:00~17:30', '17:30~21:00', '21:00 以后'],
-        className: 'slot1'
-      }],
+      time: "",
+      timeSlots: [
+        {
+          flex: 1,
+          values: ["14:00 之前", "14:00~17:30", "17:30~21:00", "21:00 以后"],
+          className: "slot1"
+        }
+      ],
 
       popupStoreVisible: false,
       storePicker: null,
-      store: '',
-      storeSlots: [{
-        flex: 1,
-        values: ['宝地广场店', '田尚坊店', '万科海上传奇店', '中原城市广场店', '春申大润发店', '曹安大润发店', '江桥万达店'],
-        className: 'slot1'
-      }],
-    }
+      store: "",
+      storeSlots: [
+        {
+          flex: 1,
+          values: ["宝地广场店", "田尚坊店", "万科海上传奇店", "中原城市广场店"],
+          className: "slot1"
+        }
+      ]
+    };
   },
-  components: {
-  },
-  mounted() {
-  },
+  components: {},
+  mounted() {},
   methods: {
-    next: function () {
-      this.$router.push({ path: '/suggest/suggestTwo' })
+    next: function() {
+      if (
+        this.items[0].message == "请选择" ||
+        this.time == "请选择" ||
+        this.store == "请选择"
+      ) {
+        Toast({
+          message: "请选择用餐信息",
+          position: "bottom",
+          duration: 2000
+        });
+      } else {
+        this.$router.push({
+          path: "/suggest/suggestTwo",
+          query: {
+            eatDate: this.items[0].message,
+            eatTime: this.time,
+            storeNo: this.store
+          }
+        });
+      }
     },
-    openDatePicker: function () {
-      this.$refs.picker.open()
+    openDatePicker: function() {
+      this.$refs.picker.open();
     },
-    handleConfirm: function (value) {
-      this.items[0].message = Moment(value).format("YYYY.MM.DD")
+    handleConfirm: function(value) {
+      this.items[0].message = Moment(value).format("YYYY-MM-DD");
     },
-    openTimePicker: function () {
-      this.popupTimeVisible = true
+    openTimePicker: function() {
+      this.popupTimeVisible = true;
     },
-    timeChange: function (picker, values) {
-      this.timePicker = picker
-      this.time = values[0]
+    timeChange: function(picker, values) {
+      this.timePicker = picker;
+      this.time = values[0];
     },
-    openStorePicker: function () {
-      this.popupStoreVisible = true
+    openStorePicker: function() {
+      this.popupStoreVisible = true;
     },
-    storeChange: function (picker, values) {
-      this.storePicker = picker
-      this.store = values[0]
+    storeChange: function(picker, values) {
+      this.storePicker = picker;
+      this.store = values[0];
     },
-    select: function (value) {
+    select: function(value) {
       if (value == "Time") {
-        this.popupTimeVisible = false
-        this.items[1].message = this.time
+        this.popupTimeVisible = false;
+        this.items[1].message = this.time;
       }
       if (value == "Store") {
-        this.popupStoreVisible = false
-        this.items[2].message = this.store
+        this.popupStoreVisible = false;
+        this.items[2].message = this.store;
       }
     },
-    cancel: function (value) {
+    cancel: function(value) {
       if (value == "Time") {
-        this.popupTimeVisible = false
-        this.timePicker.setSlotValue(0, this.time)
+        this.popupTimeVisible = false;
+        this.timePicker.setSlotValue(0, this.time);
       }
       if (value == "Store") {
-        this.popupStoreVisible = false
-        this.storePicker.setSlotValue(0, this.store)
+        this.popupStoreVisible = false;
+        this.storePicker.setSlotValue(0, this.store);
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -123,16 +150,16 @@ export default {
 
 .suggestInfoTitle {
   color: #fff;
-  background: #86C166;
-  padding: 0 .25rem;
+  background: #86c166;
+  padding: 0 0.25rem;
   height: 1.2rem;
   line-height: 1.2rem;
-  font-size: .4rem;
+  font-size: 0.4rem;
   border-radius: 6px 6px 0 0;
 }
 
 .suggestInfoContent {
-  color: #0B1013;
+  color: #0b1013;
   /*height: 1rem;
   line-height: 1rem;
   font-size: .35rem;*/

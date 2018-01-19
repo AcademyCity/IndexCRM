@@ -61,11 +61,11 @@
   </div>
 </template>
 <script>
-import { MessageBox } from "mint-ui"
+import { MessageBox } from "mint-ui";
 export default {
   data() {
     return {
-      selected: 'validCoupon',
+      selected: "validCoupon",
       items: null
       //  [
       //   { message: '土豆', time: '2017.05.03', url: a, isUse: false },
@@ -75,51 +75,63 @@ export default {
       //   { message: '铁棍山药', time: '2017.05.03', url: e, isUse: false },
       //   { message: '台式花枝丸', time: '2017.05.03', url: f, isUse: true }
       // ]
-    }
+    };
   },
   mounted() {
- 
     this.getVipCoupon();
-
   },
   methods: {
-    couponInfo: function (obj) {
+    couponInfo: function(obj) {
       if (this.isUsable(obj.StartTime)) {
-          this.$router.push({ path: '/coupon/couponInfo' , query:{ couponId:  obj.CouponId}})
+        this.$router.push({
+          path: "/coupon/couponInfo",
+          query: { couponId: obj.CouponId }
+        });
       }
     },
-    isExpired: function(EndTime){
-        return new Date(new Date(EndTime).toDateString())<new Date(new Date().toDateString());
+    isExpired: function(EndTime) {
+      EndTime = EndTime.replace("T", " ").substr(0, 10);
+      return (
+        new Date(new Date(EndTime).toDateString()) <
+        new Date(new Date().toDateString())
+      );
     },
-    isUsable: function(StartTime){
-        return new Date(new Date(StartTime).toDateString())<=new Date(new Date().toDateString());
+    isUsable: function(StartTime) {
+      StartTime = StartTime.replace("T", " ").substr(0, 10);
+      return (
+        new Date(new Date(StartTime).toDateString()) <=
+        new Date(new Date().toDateString())
+      );
     },
     getVipCoupon: function() {
-      this.$http.get("Coupon/GetVipCoupon?openId="+ this.$store.state.common.login.openId)
-          .then(response => {
+      this.$http
+        .get(
+          "Coupon/GetVipCoupon?openId=" + this.$store.state.common.login.openId
+        )
+        .then(response => {
           if (response.success) {
-              this.items = response.message
+            this.items = response.message;
           } else {
-              MessageBox.alert(response.message).then(action => {
-              this.$store.dispatch('common/login/logOut')
+            MessageBox.alert(response.message).then(action => {
+              this.$store.dispatch("common/login/logOut");
               window.location.reload();
-              });
+            });
           }
-          })
-          .catch(error => {
-              MessageBox.alert('发生错误:' + error).then(action => {
-              this.$store.dispatch('common/login/logOut')
-              window.location.reload();
-              });
+        })
+        .catch(error => {
+          MessageBox.alert("发生错误:" + error).then(action => {
+            this.$store.dispatch("common/login/logOut");
+            window.location.reload();
           });
-      }
+        });
+    }
   }
-}
+};
 </script>
 
 <style scoped>
 .couponBox {
-  margin-bottom: .15rem;
+  margin-bottom: 0.15rem;
   width: 100%;
   height: 2.8rem;
   background: #ffffff;
@@ -135,7 +147,7 @@ export default {
   float: left;
   width: 3.4rem;
   height: 2.8rem;
-  padding: .4rem .7rem;
+  padding: 0.4rem 0.7rem;
 }
 
 .couponImg {
@@ -160,31 +172,31 @@ export default {
 .couponTag {
   float: left;
   text-align: left;
-  padding: .8rem 0 .6rem 0;
-  line-height: .7rem;
+  padding: 0.8rem 0 0.6rem 0;
+  line-height: 0.7rem;
 }
 
 .couponName {
-  font-size: .45rem;
-  color: #86C166;
-  height: .7rem;
+  font-size: 0.45rem;
+  color: #86c166;
+  height: 0.7rem;
 }
 
 .couponTime {
-  font-size: .33rem;
-  color: #0B1013;
-  height: .7rem;
+  font-size: 0.33rem;
+  color: #0b1013;
+  height: 0.7rem;
 }
 
 .useTag {
-  padding: .1rem .7rem;
-  color: #CC543A;
-  font-size: .4rem;
-  border: 3px #CC543A solid;
+  padding: 0.1rem 0.7rem;
+  color: #cc543a;
+  font-size: 0.4rem;
+  border: 3px #cc543a solid;
   font-weight: bold;
   position: absolute;
-  bottom: .9rem;
-  right: .8rem;
+  bottom: 0.9rem;
+  right: 0.8rem;
   /* Rotate div */
   transform: rotate(-25deg);
   -ms-transform: rotate(-25deg);
@@ -198,14 +210,14 @@ export default {
 }
 
 .expiredTag {
-  padding: .1rem .7rem;
+  padding: 0.1rem 0.7rem;
   color: #808080;
-  font-size: .4rem;
+  font-size: 0.4rem;
   border: 3px #808080 solid;
   font-weight: bold;
   position: absolute;
-  bottom: .9rem;
-  right: .8rem;
+  bottom: 0.9rem;
+  right: 0.8rem;
   /* Rotate div */
   transform: rotate(-25deg);
   -ms-transform: rotate(-25deg);
