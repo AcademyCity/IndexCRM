@@ -86,7 +86,7 @@ router.beforeEach(function (to, from, next) {
                 request.get('WeChat/UserInfoCallback?code=' + code + '&state=' + state)
                     .then((response) => {
                         if (response.success) {
-                            store.dispatch('common/login/logIn', [response.message.message.token, response.message.openId, response.message.vipCode])
+                            store.dispatch('common/login/logIn', [response.message.token, response.message.openId, response.message.vipCode])
                             next()
                         } else {
                             MessageBox.alert(response.message).then(action => {
