@@ -7,14 +7,14 @@
                 </mt-radio>
             </div>
         </div> 
-        <div class="suggestInfo">
+        <!--<div class="suggestInfo">
             <div class="suggestInfoTitle">{{items[1].detail}}</div>
             <div class="suggestInfoContent">
                 <mt-cell @click.native="openSourcePicker" :key="items[1].message" :title="items[1].message" is-link>
                 </mt-cell>
             </div>
         </div>
-        <!-- <div class="suggestInfo">
+         <div class="suggestInfo">
             <div class="suggestInfoTitle">{{items[2].detail}}</div>
             <div class="suggestInfoContent">
                 <mt-cell @click.native="openFeelPicker(0)" :key="items[0].message" title="汤头" is-link>
@@ -147,7 +147,7 @@ export default {
       data.Reply = this.items[3].message;
       data.ReplyDetail = this.suggestContent;
       data.Reply1 = this.isFirst;
-      data.Reply2 = this.items[1].message;
+      data.Reply2 = "";
       data.Reply3 = "";
       data.Reply4 = "";
       data.Reply5 = "";
@@ -158,8 +158,7 @@ export default {
       
       if (
         data.Reply == "请选择" ||
-        data.Reply1 == "" ||
-        data.Reply2 == "请选择"
+        data.Reply1 == "" 
       ) {
         Toast({
           message: "请完善建议内容",
